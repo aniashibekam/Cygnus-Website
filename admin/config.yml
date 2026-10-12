@@ -1,6 +1,7 @@
 
 backend:
   name: turbo-github
+  repo: aniashibekam/cygnus-website
   branch: master
   turbo_site_id: 08220665-8101-41f7-b72d-780292a59b0a
 
