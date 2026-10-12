@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cygnus | Article</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .article-page {
+            max-width: 850px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .article-meta {
+            color: #39804b;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .article-page h1 {
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .article-cover {
+            width: 100%;
+            max-height: 430px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .article-body {
+            line-height: 1.85;
+            overflow-wrap: anywhere;
+        }
+
+        .article-body h2,
+        .article-body h3 {
+            margin-top: 28px;
+        }
+
+        .article-body p {
+            margin: 0 0 18px;
+        }
+
+        .article-body ul,
+        .article-body ol {
+            margin: 0 0 20px;
+            padding-left: 25px;
+        }
+
+        .article-error {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .article-back-link {
+            display: inline-block;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="article-page" id="article">
+        <p>Loading article...</p>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+    async function loadArticle() {
+        const container = document.getElementById("article");
+        const slug = new URLSearchParams(window.location.search).get("slug");
+
+        if (!slug) {
+            showError("No article was selected.");
+            return;
+        }
+
+        try {
+            const response = await fetch("data/posts.json");
+
+            if (!response.ok) {
+                throw new Error("Could not load posts.");
+            }
+
+            const data = await response.json();
+            const post = (data.posts || []).find(item => item.slug === slug);
+
+            if (!post) {
+                showError("This article could not be found.");
+                return;
+            }
+
+            document.title = post.title + " | Cygnus";
+
+            const title = escapeHTML(post.title || "Untitled");
+            const category = escapeHTML(post.category || "Insights");
+            const date = post.date
+                ? new Date(post.date).toLocaleDateString(undefined, {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric"
+                })
+                : "";
+
+            const cover = post.image
+                ? `<img class="article-cover"
+                     src="${escapeHTML(post.image)}"
+                     alt="${title}">`
+                : "";
+
+            const articleBody = window.marked
+                ? marked.parse(post.body || "")
+                : `<p>${escapeHTML(post.body || "")}</p>`;
+
+            container.innerHTML = `
+                <p class="article-meta">${category}${date ? " · " + escapeHTML(date) : ""}</p>
+                <h1>${title}</h1>
+                ${cover}
+                <div class="article-body">${articleBody}</div>
+                <a class="article-back-link" href="blog.html">← Back to Blog</a>
+                <section id="comments" class="comments-section">
+                    <h2>Join the Conversation</h2>
+                    <p>Comments will be available here once the comment service is connected.</p>
+                </section>
+            `;
+        } catch (error) {
+            console.error(error);
+            showError("We couldn't load this article. Please try again later.");
+        }
+
+        function showError(message) {
+            container.innerHTML = `
+                <div class="article-error">
+                    <h1>Article unavailable</h1>
+                    <p>${escapeHTML(message)}</p>
+                    <a class="article-back-link" href="blog.html">Back to Blog</a>
+                </div>
+            `;
+        }
+    }
+
+    function escapeHTML(value) {
+        return String(value).replace(/[&<>"']/g, character => ({
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+        })[character]);
+    }
+
+    loadArticle();
+    </script>
+
+</body>
+</html>
