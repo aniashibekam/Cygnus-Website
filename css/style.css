@@ -1871,3 +1871,93 @@ nav a.active::after {
         font-size: 1rem;
     }
 }
+
+/* CYGNUS BLOG ARCHIVE FILTERS */
+
+.blog-archive {
+    margin: 0 0 32px;
+    padding: 24px;
+    background: linear-gradient(135deg, #f2f8f2, #ffffff);
+    border: 1px solid #dce9dc;
+    border-radius: 14px;
+}
+
+.blog-archive-heading h3 {
+    margin: 0 0 6px;
+    color: #173d2b;
+    font-size: 1.25rem;
+}
+
+.blog-archive-heading p {
+    margin: 0 0 18px;
+    color: #627268;
+    font-size: 0.95rem;
+}
+
+.blog-filters {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.blog-filter,
+#blog-year {
+    min-height: 42px;
+    padding: 10px 16px;
+    border: 1px solid #cbdccd;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #234533;
+    font: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease,
+                border-color 0.2s ease, transform 0.2s ease;
+}
+
+.blog-filter:hover,
+#blog-year:hover {
+    border-color: #23834b;
+}
+
+.blog-filter:hover {
+    transform: translateY(-1px);
+}
+
+.blog-filter.active {
+    background: #176b3a;
+    border-color: #176b3a;
+    color: #ffffff;
+}
+
+#blog-year {
+    min-width: 135px;
+}
+
+#blog-results-count {
+    margin: 18px 0;
+    color: #627268;
+    font-size: 0.9rem;
+}
+
+.blog-date {
+    margin: 5px 0 10px;
+    color: #6b786f;
+    font-size: 0.82rem;
+}
+
+@media (max-width: 600px) {
+    .blog-archive {
+        padding: 18px;
+    }
+
+    .blog-filters {
+        align-items: stretch;
+    }
+
+    .blog-filter,
+    #blog-year {
+        flex: 1 1 auto;
+    }
+}

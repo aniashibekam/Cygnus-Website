@@ -51,69 +51,171 @@
         </p>
     </div>
 
-    <div class="blog-grid" id="blog-grid">
+    
+<div class="blog-archive">
+    <div class="blog-archive-heading">
+        <h3>Browse the Archive</h3>
+        <p>Explore Cygnus news and insights by date.</p>
+    </div>
+
+    <div class="blog-filters">
+        <button class="blog-filter active" data-filter="all">All Articles</button>
+        <button class="blog-filter" data-filter="month">This Month</button>
+        <button class="blog-filter" data-filter="previous">Previous Month</button>
+        <select id="blog-year" aria-label="Filter articles by year">
+            <option value="all">All Years</option>
+        </select>
+    </div>
+</div>
+
+<div class="blog-grid" id="blog-grid">
+    <p>Loading articles...</p>
+</div>
+
+<p id="blog-results-count" aria-live="polite"></p>
         <p>Loading articles...</p>
     </div>
 </section>
 
+<
 <script>
+let allBlogPosts = [];
+let activeBlogFilter = "all";
+
 async function loadBlogPosts() {
     const blogGrid = document.getElementById("blog-grid");
+    const yearSelect = document.getElementById("blog-year");
 
     try {
         const response = await fetch("data/posts.json");
-
-        if (!response.ok) {
-            throw new Error("Could not load blog posts");
-        }
+        if (!response.ok) throw new Error("Could not load blog posts");
 
         const data = await response.json();
-        const posts = data.posts || [];
 
-        if (posts.length === 0) {
-            blogGrid.textContent = "New articles coming soon.";
-            return;
-        }
+        allBlogPosts = (data.posts || []).slice().sort((a, b) => {
+            const dateA = Date.parse(a.date || "") || 0;
+            const dateB = Date.parse(b.date || "") || 0;
+            return dateB - dateA;
+        });
 
-        blogGrid.innerHTML = posts
-            .slice()
-            .reverse()
-            .map(post => {
-                const title = escapeHTML(post.title || "Untitled");
-                const category = escapeHTML(post.category || "Insights");
-                const excerpt = escapeHTML(post.excerpt || "");
-                const slug = encodeURIComponent(post.slug || "");
-                const image = post.image
-                    ? `<img src="${escapeHTML(post.image)}"
-                         alt="${title}"
-                         class="cms-blog-cover">`
-                    : "";
+        const years = [...new Set(
+            allBlogPosts
+                .map(post => {
+                    const timestamp = Date.parse(post.date || "");
+                    return timestamp ? new Date(timestamp).getFullYear() : null;
+                })
+                .filter(Boolean)
+        )].sort((a, b) => b - a);
 
-                return `
-                    <article class="blog-card">
-                        <div class="blog-image">
-                            ${image}
-                            <span>${category}</span>
-                        </div>
-                        <div class="blog-content">
-                            <p class="blog-category">${category}</p>
-                            <h3>${title}</h3>
-                            <p>${excerpt}</p>
-                            <a class="article-back-link"
-                               href="article.html?slug=${slug}">
-                                Read Article &rarr;
-                            </a>
-                        </div>
-                    </article>
-                `;
-            })
-            .join("");
+        years.forEach(year => {
+            const option = document.createElement("option");
+            option.value = year;
+            option.textContent = year;
+            yearSelect.appendChild(option);
+        });
+
+        document.querySelectorAll(".blog-filter").forEach(button => {
+            button.addEventListener("click", () => {
+                activeBlogFilter = button.dataset.filter;
+
+                document.querySelectorAll(".blog-filter").forEach(item => {
+                    item.classList.toggle("active", item === button);
+                });
+
+                renderBlogPosts();
+            });
+        });
+
+        yearSelect.addEventListener("change", renderBlogPosts);
+
+        renderBlogPosts();
 
     } catch (error) {
         console.error("Blog loading error:", error);
-        blogGrid.textContent =
-            "Articles could not load. Please try again later.";
+        blogGrid.textContent = "Articles could not load. Please try again later.";
     }
+}
+
+function renderBlogPosts() {
+    const blogGrid = document.getElementById("blog-grid");
+    const selectedYear = document.getElementById("blog-year").value;
+    const count = document.getElementById("blog-results-count");
+    const now = new Date();
+
+    const filteredPosts = allBlogPosts.filter(post => {
+        const timestamp = Date.parse(post.date || "");
+        const postDate = timestamp ? new Date(timestamp) : null;
+
+        if (selectedYear !== "all") {
+            if (!postDate || postDate.getFullYear() !== Number(selectedYear)) {
+                return false;
+            }
+        }
+
+        if (activeBlogFilter === "month") {
+            return postDate &&
+                postDate.getFullYear() === now.getFullYear() &&
+                postDate.getMonth() === now.getMonth();
+        }
+
+        if (activeBlogFilter === "previous") {
+            const previousMonth = new Date(
+                now.getFullYear(),
+                now.getMonth() - 1,
+                1
+            );
+
+            return postDate &&
+                postDate.getFullYear() === previousMonth.getFullYear() &&
+                postDate.getMonth() === previousMonth.getMonth();
+        }
+
+        return true;
+    });
+
+    if (!filteredPosts.length) {
+        blogGrid.innerHTML = "<p>No articles found for this period.</p>";
+        count.textContent = "0 articles";
+        return;
+    }
+
+    blogGrid.innerHTML = filteredPosts.map(post => {
+        const title = escapeHTML(post.title || "Untitled");
+        const category = escapeHTML(post.category || "Insights");
+        const excerpt = escapeHTML(post.excerpt || "");
+        const slug = encodeURIComponent(post.slug || "");
+        const timestamp = Date.parse(post.date || "");
+        const dateLabel = timestamp
+            ? new Date(timestamp).toLocaleDateString("en-GB", {
+                day: "numeric",
+                month: "long",
+                year: "numeric"
+            })
+            : "";
+
+        const image = post.image
+            ? `<img src="${escapeHTML(post.image)}" alt="${title}" class="cms-blog-cover">`
+            : "";
+
+        return `
+            <article class="blog-card">
+                <div class="blog-image">
+                    ${image}
+                    <span>${category}</span>
+                </div>
+                <div class="blog-content">
+                    <p class="blog-category">${category}</p>
+                    ${dateLabel ? `<p class="blog-date">${dateLabel}</p>` : ""}
+                    <h3>${title}</h3>
+                    <p>${excerpt}</p>
+                    <a class="article-back-link"
+                       href="article.html?slug=${slug}">Read Article &rarr;</a>
+                </div>
+            </article>
+        `;
+    }).join("");
+
+    count.textContent = `${filteredPosts.length} article${filteredPosts.length === 1 ? "" : "s"}`;
 }
 
 function escapeHTML(value) {
@@ -128,6 +230,7 @@ function escapeHTML(value) {
 
 loadBlogPosts();
 </script>
+
 
     </main>
 
