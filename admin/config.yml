@@ -1,0 +1,30 @@
+
+backend:
+  name: turbo-github
+  branch: master
+  turbo_site_id: 08220665-8101-41f7-b72d-780292a59b0a
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    files:
+      - label: "All Blog Posts"
+        name: "posts"
+        file: "data/posts.json"
+        format: json
+        fields:
+          - label: "Posts"
+            name: "posts"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Slug", name: "slug", widget: "string" }
+              - { label: "Publication Date", name: "date", widget: "datetime" }
+              - { label: "Category", name: "category", widget: "string" }
+              - { label: "Excerpt", name: "excerpt", widget: "text" }
+              - { label: "Cover Image", name: "image", widget: "image", required: false }
+              - { label: "Article Content", name: "body", widget: "markdown" }
