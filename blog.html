@@ -40,67 +40,95 @@
             </div>
         </section>
 
-        <section class="blog-section">
-            <div class="section-heading">
-                <p class="eyebrow green">FROM CYGNUS</p>
-                <h2>Latest Insights</h2>
-                <p>
-                    Ideas, lessons and stories about building practical
-                    solutions and creating lasting value.
-                </p>
-            </div>
+        
+<section class="blog-section">
+    <div class="section-heading">
+        <p class="eyebrow green">FROM CYGNUS</p>
+        <h2>Latest Insights</h2>
+        <p>
+            Ideas, lessons and stories about building practical
+            solutions and creating lasting value.
+        </p>
+    </div>
 
-            <div class="blog-grid">
+    <div class="blog-grid" id="blog-grid">
+        <p>Loading articles...</p>
+    </div>
+</section>
 
-                <article class="blog-card">
-                    <div class="blog-image blog-agriculture">
-                        <span>Agriculture</span>
-                    </div>
-                    <div class="blog-content">
-                        <p class="blog-category">FOOD SYSTEMS</p>
-                        <h3>Rethinking Agriculture as an Engine of Opportunity</h3>
-                        <p>
-                            How productive agriculture can support food
-                            security, local enterprise and youth opportunity.
-                        </p>
-                        <a class="article-back-link" href="article-agriculture.html">
-                            Read Article &rarr;
-                        </a>
-                    </div>
-                </article>
+<script>
+async function loadBlogPosts() {
+    const blogGrid = document.getElementById("blog-grid");
 
-                <article class="blog-card">
-                    <div class="blog-image blog-education">
-                        <span>Education</span>
-                    </div>
-                    <div class="blog-content">
-                        <p class="blog-category">LEARNING &amp; TECHNOLOGY</p>
-                        <h3>Connecting Education With Practical Skills</h3>
-                        <p>
-                            Why learning becomes more meaningful when
-                            knowledge connects with real world challenges.
-                        </p>
-                        <span class="blog-status">Coming soon</span>
-                    </div>
-                </article>
+    try {
+        const response = await fetch("data/posts.json");
 
-                <article class="blog-card">
-                    <div class="blog-image blog-culture">
-                        <span>Culture</span>
-                    </div>
-                    <div class="blog-content">
-                        <p class="blog-category">AFRICAN CREATIVITY</p>
-                        <h3>Preserving African Stories Through Innovation</h3>
-                        <p>
-                            Exploring how storytelling and digital
-                            experiences can keep cultural knowledge alive.
-                        </p>
-                        <span class="blog-status">Coming soon</span>
-                    </div>
-                </article>
+        if (!response.ok) {
+            throw new Error("Could not load blog posts");
+        }
 
-            </div>
-        </section>
+        const data = await response.json();
+        const posts = data.posts || [];
+
+        if (posts.length === 0) {
+            blogGrid.textContent = "New articles coming soon.";
+            return;
+        }
+
+        blogGrid.innerHTML = posts
+            .slice()
+            .reverse()
+            .map(post => {
+                const title = escapeHTML(post.title || "Untitled");
+                const category = escapeHTML(post.category || "Insights");
+                const excerpt = escapeHTML(post.excerpt || "");
+                const slug = encodeURIComponent(post.slug || "");
+                const image = post.image
+                    ? `<img src="${escapeHTML(post.image)}"
+                         alt="${title}"
+                         class="cms-blog-cover">`
+                    : "";
+
+                return `
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            ${image}
+                            <span>${category}</span>
+                        </div>
+                        <div class="blog-content">
+                            <p class="blog-category">${category}</p>
+                            <h3>${title}</h3>
+                            <p>${excerpt}</p>
+                            <a class="article-back-link"
+                               href="article.html?slug=${slug}">
+                                Read Article &rarr;
+                            </a>
+                        </div>
+                    </article>
+                `;
+            })
+            .join("");
+
+    } catch (error) {
+        console.error("Blog loading error:", error);
+        blogGrid.textContent =
+            "Articles could not load. Please try again later.";
+    }
+}
+
+function escapeHTML(value) {
+    return String(value).replace(/[&<>"']/g, character => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+    })[character]);
+}
+
+loadBlogPosts();
+</script>
+
     </main>
 
     <footer>
