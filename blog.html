@@ -68,8 +68,13 @@
     </div>
 </div>
 
-<div class="blog-grid" id="blog-grid">
-    <p>Loading articles...</p>
+<div class="blog-grid" id="blog-grid">  
+<div class="blog-load-more-wrap">
+    <button id="blog-load-more" class="blog-load-more" type="button">
+        Load More Articles
+    </button>
+</div>
+
 </div>
 
 <p id="blog-results-count" aria-live="polite"></p>
@@ -81,13 +86,16 @@
 <script>
 let allBlogPosts = [];
 let activeBlogFilter = "all";
+let visibleBlogPosts = 6;
+const blogPostsPerLoad = 6;
 
 async function loadBlogPosts() {
     const blogGrid = document.getElementById("blog-grid");
     const yearSelect = document.getElementById("blog-year");
 
     try {
-        const response = await fetch("data/posts.json");
+        const response = await fetch("data/posts.json?v=" + Date.now(), {
+    cache: "no-store"});
         if (!response.ok) throw new Error("Could not load blog posts");
 
         const data = await response.json();
@@ -117,6 +125,7 @@ async function loadBlogPosts() {
         document.querySelectorAll(".blog-filter").forEach(button => {
             button.addEventListener("click", () => {
                 activeBlogFilter = button.dataset.filter;
+                visibleBlogPosts = 6;
 
                 document.querySelectorAll(".blog-filter").forEach(item => {
                     item.classList.toggle("active", item === button);
@@ -126,7 +135,14 @@ async function loadBlogPosts() {
             });
         });
 
-        yearSelect.addEventListener("change", renderBlogPosts);
+        yearSelect.addEventListener("change", () => {
+            visibleBlogPosts = 6;
+            renderBlogPosts();
+        });
+        document.getElementById("blog-load-more").addEventListener("click", () => {
+            visibleBlogPosts += blogPostsPerLoad;
+            renderBlogPosts();
+        });
 
         renderBlogPosts();
 
@@ -179,7 +195,8 @@ function renderBlogPosts() {
         return;
     }
 
-    blogGrid.innerHTML = filteredPosts.map(post => {
+    const postsToShow = filteredPosts.slice(0, visibleBlogPosts);
+    blogGrid.innerHTML = postsToShow.map(post => {
         const title = escapeHTML(post.title || "Untitled");
         const category = escapeHTML(post.category || "Insights");
         const excerpt = escapeHTML(post.excerpt || "");
@@ -215,7 +232,10 @@ function renderBlogPosts() {
         `;
     }).join("");
 
-    count.textContent = `${filteredPosts.length} article${filteredPosts.length === 1 ? "" : "s"}`;
+    count.textContent = `Showing ${postsToShow.length} of ${filteredPosts.length} articles`;
+    const loadMoreButton = document.getElementById("blog-load-more");
+    loadMoreButton.style.display =
+    visibleBlogPosts < filteredPosts.length ? "inline-block" : "none";
 }
 
 function escapeHTML(value) {
@@ -229,6 +249,7 @@ function escapeHTML(value) {
 }
 
 loadBlogPosts();
+
 </script>
 
 
