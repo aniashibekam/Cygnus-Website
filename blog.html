@@ -4,34 +4,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Blog | Cygnus Alliances Nig Ltd</title>
+    <meta name="description" content="Explore insights, stories and project updates from Cygnus Alliances Nig Ltd.">
+
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* MOBILE NAVIGATION */
+
+        .menu-toggle {
+            display: none;
+            border: none;
+            background: transparent;
+            color: #168447;
+            font-size: 27px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 800px) {
+            .navbar {
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .navbar nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding: 10px 5% 20px;
+                background: white;
+                border-bottom: 1px solid #e8eee9;
+                box-shadow: 0 12px 20px rgba(0,0,0,0.06);
+            }
+
+            .navbar nav.open {
+                display: flex;
+            }
+
+            .navbar nav a {
+                padding: 13px 0;
+            }
+
+            .navbar nav a::after {
+                display: none;
+            }
+        }
+
+        /* BLOG LOADING AND EMPTY STATES */
+
+        .blog-status {
+            padding: 35px 15px;
+            color: #64746a;
+            text-align: center;
+            line-height: 1.7;
+        }
+
+        .blog-status.error {
+            color: #a33b32;
+        }
+
+        .blog-load-more-wrap {
+            margin-top: 35px;
+            text-align: center;
+        }
+
+        .blog-load-more[hidden] {
+            display: none !important;
+        }
+    </style>
 </head>
+
 <body>
+
+    <!-- NAVIGATION -->
 
     <header class="navbar">
 
-    <div class="logo">
-        CYGNUS ALLIANCES <br> NIG LTD
-    </div>
+        <a href="index.html" class="logo">
+            CYGNUS ALLIANCES <br> NIG LTD
+        </a>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html">Contact</a>
-        <a href="blog.html" class="active" aria-current="page">Blog</a>
-        <a href="team.html">Team</a>
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="mainNav">
+            ☰
+        </button>
 
-    </nav>
+        <nav id="mainNav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
+            <a href="blog.html" class="active" aria-current="page">Blog</a>
+            <a href="team.html">Team</a>
+        </nav>
 
-</header>
+    </header>
 
     <main>
+
+        <!-- PAGE INTRODUCTION -->
+
         <section class="page-hero">
             <div>
                 <p class="eyebrow">INSIGHTS &amp; STORIES</p>
+
                 <h1>Ideas That Move Communities Forward.</h1>
+
                 <p>
                     Explore perspectives, project updates and ideas
                     at the intersection of agriculture, technology,
@@ -40,220 +134,81 @@
             </div>
         </section>
 
-        
-<section class="blog-section">
-    <div class="section-heading">
-        <p class="eyebrow green">FROM CYGNUS</p>
-        <h2>Latest Insights</h2>
-        <p>
-            Ideas, lessons and stories about building practical
-            solutions and creating lasting value.
-        </p>
-    </div>
+        <!-- BLOG SECTION -->
 
-    
-<div class="blog-archive">
-    <div class="blog-archive-heading">
-        <h3>Browse the Archive</h3>
-        <p>Explore Cygnus news and insights by date.</p>
-    </div>
+        <section class="blog-section">
 
-    <div class="blog-filters">
-        <button class="blog-filter active" data-filter="all">All Articles</button>
-        <button class="blog-filter" data-filter="month">This Month</button>
-        <button class="blog-filter" data-filter="previous">Previous Month</button>
-        <select id="blog-year" aria-label="Filter articles by year">
-            <option value="all">All Years</option>
-        </select>
-    </div>
-</div>
+            <div class="section-heading">
+                <p class="eyebrow green">FROM CYGNUS</p>
 
-<div class="blog-grid" id="blog-grid">  
-<div class="blog-load-more-wrap">
-    <button id="blog-load-more" class="blog-load-more" type="button">
-        Load More Articles
-    </button>
-</div>
+                <h2>Latest Insights</h2>
 
-</div>
+                <p>
+                    Ideas, lessons and stories about building practical
+                    solutions and creating lasting value.
+                </p>
+            </div>
 
-<p id="blog-results-count" aria-live="polite"></p>
-        <p>Loading articles...</p>
-    </div>
-</section>
+            <!-- ARCHIVE FILTERS -->
 
-<
-<script>
-let allBlogPosts = [];
-let activeBlogFilter = "all";
-let visibleBlogPosts = 6;
-const blogPostsPerLoad = 6;
+            <div class="blog-archive">
 
-async function loadBlogPosts() {
-    const blogGrid = document.getElementById("blog-grid");
-    const yearSelect = document.getElementById("blog-year");
-
-    try {
-        const response = await fetch("data/posts.json?v=" + Date.now(), {
-    cache: "no-store"});
-        if (!response.ok) throw new Error("Could not load blog posts");
-
-        const data = await response.json();
-
-        allBlogPosts = (data.posts || []).slice().sort((a, b) => {
-            const dateA = Date.parse(a.date || "") || 0;
-            const dateB = Date.parse(b.date || "") || 0;
-            return dateB - dateA;
-        });
-
-        const years = [...new Set(
-            allBlogPosts
-                .map(post => {
-                    const timestamp = Date.parse(post.date || "");
-                    return timestamp ? new Date(timestamp).getFullYear() : null;
-                })
-                .filter(Boolean)
-        )].sort((a, b) => b - a);
-
-        years.forEach(year => {
-            const option = document.createElement("option");
-            option.value = year;
-            option.textContent = year;
-            yearSelect.appendChild(option);
-        });
-
-        document.querySelectorAll(".blog-filter").forEach(button => {
-            button.addEventListener("click", () => {
-                activeBlogFilter = button.dataset.filter;
-                visibleBlogPosts = 6;
-
-                document.querySelectorAll(".blog-filter").forEach(item => {
-                    item.classList.toggle("active", item === button);
-                });
-
-                renderBlogPosts();
-            });
-        });
-
-        yearSelect.addEventListener("change", () => {
-            visibleBlogPosts = 6;
-            renderBlogPosts();
-        });
-        document.getElementById("blog-load-more").addEventListener("click", () => {
-            visibleBlogPosts += blogPostsPerLoad;
-            renderBlogPosts();
-        });
-
-        renderBlogPosts();
-
-    } catch (error) {
-        console.error("Blog loading error:", error);
-        blogGrid.textContent = "Articles could not load. Please try again later.";
-    }
-}
-
-function renderBlogPosts() {
-    const blogGrid = document.getElementById("blog-grid");
-    const selectedYear = document.getElementById("blog-year").value;
-    const count = document.getElementById("blog-results-count");
-    const now = new Date();
-
-    const filteredPosts = allBlogPosts.filter(post => {
-        const timestamp = Date.parse(post.date || "");
-        const postDate = timestamp ? new Date(timestamp) : null;
-
-        if (selectedYear !== "all") {
-            if (!postDate || postDate.getFullYear() !== Number(selectedYear)) {
-                return false;
-            }
-        }
-
-        if (activeBlogFilter === "month") {
-            return postDate &&
-                postDate.getFullYear() === now.getFullYear() &&
-                postDate.getMonth() === now.getMonth();
-        }
-
-        if (activeBlogFilter === "previous") {
-            const previousMonth = new Date(
-                now.getFullYear(),
-                now.getMonth() - 1,
-                1
-            );
-
-            return postDate &&
-                postDate.getFullYear() === previousMonth.getFullYear() &&
-                postDate.getMonth() === previousMonth.getMonth();
-        }
-
-        return true;
-    });
-
-    if (!filteredPosts.length) {
-        blogGrid.innerHTML = "<p>No articles found for this period.</p>";
-        count.textContent = "0 articles";
-        return;
-    }
-
-    const postsToShow = filteredPosts.slice(0, visibleBlogPosts);
-    blogGrid.innerHTML = postsToShow.map(post => {
-        const title = escapeHTML(post.title || "Untitled");
-        const category = escapeHTML(post.category || "Insights");
-        const excerpt = escapeHTML(post.excerpt || "");
-        const slug = encodeURIComponent(post.slug || "");
-        const timestamp = Date.parse(post.date || "");
-        const dateLabel = timestamp
-            ? new Date(timestamp).toLocaleDateString("en-GB", {
-                day: "numeric",
-                month: "long",
-                year: "numeric"
-            })
-            : "";
-
-        const image = post.image
-            ? `<img src="${escapeHTML(post.image)}" alt="${title}" class="cms-blog-cover">`
-            : "";
-
-        return `
-            <article class="blog-card">
-                <div class="blog-image">
-                    ${image}
-                    <span>${category}</span>
+                <div class="blog-archive-heading">
+                    <h3>Browse the Archive</h3>
+                    <p>Explore Cygnus news and insights by date.</p>
                 </div>
-                <div class="blog-content">
-                    <p class="blog-category">${category}</p>
-                    ${dateLabel ? `<p class="blog-date">${dateLabel}</p>` : ""}
-                    <h3>${title}</h3>
-                    <p>${excerpt}</p>
-                    <a class="article-back-link"
-                       href="article.html?slug=${slug}">Read Article &rarr;</a>
+
+                <div class="blog-filters">
+
+                    <button class="blog-filter active" data-filter="all">
+                        All Articles
+                    </button>
+
+                    <button class="blog-filter" data-filter="month">
+                        This Month
+                    </button>
+
+                    <button class="blog-filter" data-filter="previous">
+                        Previous Month
+                    </button>
+
+                    <select id="blog-year" aria-label="Filter articles by year">
+                        <option value="all">All Years</option>
+                    </select>
+
                 </div>
-            </article>
-        `;
-    }).join("");
 
-    count.textContent = `Showing ${postsToShow.length} of ${filteredPosts.length} articles`;
-    const loadMoreButton = document.getElementById("blog-load-more");
-    loadMoreButton.style.display =
-    visibleBlogPosts < filteredPosts.length ? "inline-block" : "none";
-}
+            </div>
 
-function escapeHTML(value) {
-    return String(value).replace(/[&<>"']/g, character => ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#39;"
-    })[character]);
-}
+            <!-- ARTICLES APPEAR HERE -->
 
-loadBlogPosts();
+            <div class="blog-grid" id="blog-grid">
 
-</script>
+                <p class="blog-status" id="blog-status">
+                    Loading articles...
+                </p>
 
+            </div>
+
+            <!-- LOAD MORE IS OUTSIDE THE GRID -->
+
+            <div class="blog-load-more-wrap">
+                <button
+                    id="blog-load-more"
+                    class="blog-load-more"
+                    type="button"
+                    hidden>
+                    Load More Articles
+                </button>
+            </div>
+
+            <p id="blog-results-count" aria-live="polite"></p>
+
+        </section>
 
     </main>
+
+    <!-- FOOTER -->
 
     <footer>
 
@@ -274,7 +229,6 @@ loadBlogPosts();
                 <a href="contact.html">Contact</a>
                 <a href="blog.html">Blog</a>
                 <a href="team.html">Team</a>
-
             </div>
 
             <div class="footer-company">
@@ -292,7 +246,358 @@ loadBlogPosts();
 
     </footer>
 
-</body>
-</html>
+    <script>
+        // MOBILE NAVIGATION
+
+        const menuToggle = document.getElementById("menuToggle");
+        const mainNav = document.getElementById("mainNav");
+
+        function closeMobileMenu() {
+            mainNav.classList.remove("open");
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-label", "Open navigation menu");
+            menuToggle.textContent = "☰";
+        }
+
+        menuToggle.addEventListener("click", function(event) {
+            event.stopPropagation();
+
+            const isOpen = mainNav.classList.toggle("open");
+
+            menuToggle.setAttribute("aria-expanded", isOpen);
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen ? "Close navigation menu" : "Open navigation menu"
+            );
+
+            menuToggle.textContent = isOpen ? "✕" : "☰";
+        });
+
+        mainNav.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", closeMobileMenu);
+        });
+
+        document.addEventListener("click", function(event) {
+            if (
+                mainNav.classList.contains("open") &&
+                !mainNav.contains(event.target) &&
+                !menuToggle.contains(event.target)
+            ) {
+                closeMobileMenu();
+            }
+        });
+
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape") {
+                closeMobileMenu();
+            }
+        });
+
+
+        // BLOG SYSTEM
+
+        let allBlogPosts = [];
+        let activeBlogFilter = "all";
+        let visibleBlogPosts = 6;
+
+        const blogPostsPerLoad = 6;
+
+        async function loadBlogPosts() {
+
+            const blogGrid = document.getElementById("blog-grid");
+            const yearSelect = document.getElementById("blog-year");
+            const status = document.getElementById("blog-status");
+
+            try {
+
+                const response = await fetch(
+                    "data/posts.json?v=" + Date.now(),
+                    { cache: "no-store" }
+                );
+
+                if (!response.ok) {
+                    throw new Error("Could not load blog posts.");
+                }
+
+                const data = await response.json();
+
+                if (!Array.isArray(data.posts)) {
+                    throw new Error("The blog data format is incorrect.");
+                }
+
+                allBlogPosts = data.posts.slice().sort((a, b) => {
+                    const dateA = Date.parse(a.date || "") || 0;
+                    const dateB = Date.parse(b.date || "") || 0;
+
+                    return dateB - dateA;
+                });
+
+                // REMOVE LOADING MESSAGE
+
+                status.remove();
+
+                // POPULATE YEAR FILTER
+
+                const years = [
+                    ...new Set(
+                        allBlogPosts
+                            .map(post => {
+                                const timestamp = Date.parse(post.date || "");
+
+                                return timestamp
+                                    ? new Date(timestamp).getFullYear()
+                                    : null;
+                            })
+                            .filter(Boolean)
+                    )
+                ].sort((a, b) => b - a);
+
+                years.forEach(year => {
+
+                    const option = document.createElement("option");
+
+                    option.value = year;
+                    option.textContent = year;
+
+                    yearSelect.appendChild(option);
+
+                });
+
+                // FILTER BUTTONS
+
+                document.querySelectorAll(".blog-filter").forEach(button => {
+
+                    button.addEventListener("click", function() {
+
+                        activeBlogFilter = this.dataset.filter;
+                        visibleBlogPosts = 6;
+
+                        document.querySelectorAll(".blog-filter").forEach(item => {
+                            item.classList.toggle("active", item === this);
+                        });
+
+                        renderBlogPosts();
+
+                    });
+
+                });
+
+                // YEAR FILTER
+
+                yearSelect.addEventListener("change", function() {
+
+                    visibleBlogPosts = 6;
+                    renderBlogPosts();
+
+                });
+
+                // LOAD MORE
+
+                document.getElementById("blog-load-more")
+                    .addEventListener("click", function() {
+
+                        visibleBlogPosts += blogPostsPerLoad;
+                        renderBlogPosts();
+
+                    });
+
+                renderBlogPosts();
+
+            } catch (error) {
+
+                console.error("Blog loading error:", error);
+
+                blogGrid.innerHTML = `
+                    <p class="blog-status error">
+                        Articles could not load.
+                        Please refresh the page or try again later.
+                    </p>
+                `;
+
+                document.getElementById("blog-results-count").textContent = "";
+
+                document.getElementById("blog-load-more").hidden = true;
+
+            }
+
+        }
+
+
+        // DISPLAY ARTICLES
+
+        function renderBlogPosts() {
+
+            const blogGrid = document.getElementById("blog-grid");
+            const yearSelect = document.getElementById("blog-year");
+            const count = document.getElementById("blog-results-count");
+            const loadMoreButton = document.getElementById("blog-load-more");
+
+            const selectedYear = yearSelect.value;
+            const now = new Date();
+
+            const filteredPosts = allBlogPosts.filter(post => {
+
+                const timestamp = Date.parse(post.date || "");
+                const postDate = timestamp ? new Date(timestamp) : null;
+
+                if (selectedYear !== "all") {
+
+                    if (
+                        !postDate ||
+                        postDate.getFullYear() !== Number(selectedYear)
+                    ) {
+                        return false;
+                    }
+
+                }
+
+                if (activeBlogFilter === "month") {
+
+                    return postDate &&
+                        postDate.getFullYear() === now.getFullYear() &&
+                        postDate.getMonth() === now.getMonth();
+
+                }
+
+                if (activeBlogFilter === "previous") {
+
+                    const previousMonth = new Date(
+                        now.getFullYear(),
+                        now.getMonth() - 1,
+                        1
+                    );
+
+                    return postDate &&
+                        postDate.getFullYear() === previousMonth.getFullYear() &&
+                        postDate.getMonth() === previousMonth.getMonth();
+
+                }
+
+                return true;
+
+            });
+
+
+            // NO MATCHING ARTICLES
+
+            if (!filteredPosts.length) {
+
+                blogGrid.innerHTML = `
+                    <p class="blog-status">
+                        No articles found for this period.
+                    </p>
+                `;
+
+                count.textContent = "0 articles";
+                loadMoreButton.hidden = true;
+
+                return;
+
+            }
+
+
+            // ARTICLES TO DISPLAY
+
+            const postsToShow = filteredPosts.slice(0, visibleBlogPosts);
+
+            blogGrid.innerHTML = postsToShow.map(post => {
+
+                const title = escapeHTML(post.title || "Untitled");
+                const category = escapeHTML(post.category || "Insights");
+                const excerpt = escapeHTML(post.excerpt || "");
+                const slug = encodeURIComponent(post.slug || "");
+
+                const timestamp = Date.parse(post.date || "");
+
+                const dateLabel = timestamp
+                    ? new Date(timestamp).toLocaleDateString("en-GB", {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric"
+                    })
+                    : "";
+
+                const image = post.image
+                    ? `
+                        <img
+                            src="${escapeHTML(post.image)}"
+                            alt="${title}"
+                            class="cms-blog-cover"
+                            loading="lazy">
+                    `
+                    : "";
+
+                return `
+                    <article class="blog-card">
+
+                        <div class="blog-image">
+                            ${image}
+                            <span>${category}</span>
+                        </div>
+
+                        <div class="blog-content">
+
+                            <p class="blog-category">${category}</p>
+
+                            ${dateLabel
+                                ? `<p class="blog-date">${dateLabel}</p>`
+                                : ""
+                            }
+
+                            <h3>${title}</h3>
+
+                            <p>${excerpt}</p>
+
+                            <a
+                                class="article-back-link"
+                                href="article.html?slug=${slug}">
+                                Read Article &rarr;
+                            </a>
+
+                        </div>
+
+                    </article>
+                `;
+
+            }).join("");
+
+
+            // UPDATE ARTICLE COUNT
+
+            count.textContent =
+                `Showing ${postsToShow.length} of ${filteredPosts.length} articles`;
+
+
+            // SHOW OR HIDE LOAD MORE
+
+            loadMoreButton.hidden =
+                visibleBlogPosts >= filteredPosts.length;
+
+        }
+
+
+        // HTML ESCAPING
+
+        function escapeHTML(value) {
+
+            return String(value).replace(/[&<>"']/g, character => ({
+
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#39;"
+
+            })[character]);
+
+        }
+
+
+        // START BLOG
+
+        loadBlogPosts();
+
+    </script>
+
 </body>
 </html>
