@@ -2075,23 +2075,24 @@ nav a.active::after {
 }
 
 
-/* HOMEPAGE MOBILE AND IMAGE REFINEMENTS */
+/* HOMEPAGE SPACING AND IMAGE REFINEMENTS */
 
-/* More balanced spacing */
+/* Reduce spacing between homepage sections */
 .core-areas {
-    padding: 75px 7%;
+    padding: 60px 7%;
 }
 
 .projects {
-    padding: 75px 7%;
+    padding: 60px 7%;
 }
 
 .core-areas .section-heading {
-    margin-bottom: 35px;
+    margin-bottom: 30px;
 }
 
-/* Consistent project image proportions */
+/* Project image proportions */
 .project-image {
+    width: 100%;
     height: auto;
     min-height: 0;
     aspect-ratio: 16 / 9;
@@ -2099,34 +2100,30 @@ nav a.active::after {
     background-position: center;
 }
 
+/* Mobile refinements */
 @media (max-width: 700px) {
+
     .core-areas {
-        padding: 50px 20px;
+        padding: 40px 20px;
     }
 
     .projects {
-        padding: 50px 20px;
+        padding: 40px 20px;
     }
 
     .core-areas .section-heading {
-        margin-bottom: 28px;
+        margin-bottom: 25px;
     }
 
     .project-image {
-        aspect-ratio: 16 / 9;
+        width: 100%;
+        height: auto !important;
+        min-height: 0 !important;
+        aspect-ratio: 16 / 9 !important;
         padding: 20px;
     }
 
     .project-content {
         padding: 24px;
     }
-}
-/* FIX PROJECT IMAGE RATIO */
-.project-image {
-    width: 100%;
-    height: auto !important;
-    min-height: 0 !important;
-    aspect-ratio: 16 / 9 !important;
-    background-size: cover;
-    background-position: center;
 }
