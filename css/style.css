@@ -2127,3 +2127,499 @@ nav a.active::after {
         padding: 24px;
     }
 }
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    line-height: 1.2;
+}
+
+.logo-name {
+    color: #176b3a;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: -0.6px;
+}
+
+.logo-name strong {
+    color: #123d27;
+}
+
+.logo-tagline {
+    color: #647269;
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    margin-top: 4px;
+    text-transform: uppercase;
+}
+
+.core-areas {
+    padding: 55px 7%;
+    background: #f5f9f6;
+    text-align: center;
+}
+
+.core-areas .section-heading {
+    max-width: 650px;
+    margin: 0 auto 32px;
+    text-align: center;
+}
+
+.core-areas .section-heading h2 {
+    color: #176b3a;
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.core-areas .section-heading p {
+    color: #526057;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.areas-grid {
+    max-width: 1150px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    text-align: left;
+}
+
+.area-card {
+    background: #ffffff;
+    border: 1px solid #e0e9e2;
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: 0 5px 18px rgba(0, 50, 20, 0.05);
+}
+
+.area-card h3 {
+    color: #176b3a;
+    margin-bottom: 10px;
+}
+
+.area-card p {
+    color: #4d5951;
+    line-height: 1.7;
+}
+
+@media (max-width: 700px) {
+    .areas-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .core-areas {
+        padding: 40px 20px;
+    }
+
+    .logo-name {
+        font-size: 17px;
+    }
+}
+
+/* CYGNUS OFFICIAL HEADER LOGO */
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+}
+
+.navbar .logo img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    flex-shrink: 0;
+    display: block;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.logo-name {
+    font-size: 20px;
+    font-weight: 800;
+    color: #176b3a;
+}
+
+.logo-name strong {
+    color: #123d27;
+}
+
+.logo-tagline {
+    font-size: 10px;
+    color: #647269;
+    letter-spacing: 1px;
+    margin-top: 4px;
+}
+
+@media (max-width: 700px) {
+    .navbar .logo img {
+        width: 38px;
+        height: 38px;
+    }
+
+    .logo-name {
+        font-size: 15px;
+    }
+
+    .logo-tagline {
+        font-size: 8px;
+        letter-spacing: 0.5px;
+    }
+}
+.logo-text {
+    transform: translateY(4px);
+}
+@media (min-width: 701px) {
+    .navbar .logo img {
+        transform: translateY(10px);
+    }
+}
+
+/* WHAT WE DO: LAYOUT REFINEMENT */
+
+.core-areas {
+    padding: 55px 7%;
+    text-align: center;
+}
+
+.core-areas .section-heading {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto 35px;
+    text-align: center;
+}
+
+.core-areas .section-heading h2 {
+    margin-bottom: 14px;
+}
+
+.core-areas .section-heading p {
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.areas-grid {
+    width: 100%;
+    max-width: 1150px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    align-items: stretch;
+}
+
+.area-card {
+    height: 100%;
+    box-sizing: border-box;
+    text-align: left;
+    padding: 28px;
+}
+
+.area-card h3 {
+    margin-bottom: 12px;
+}
+
+.area-card p {
+    margin: 0;
+}
+
+@media (max-width: 700px) {
+    .core-areas {
+        padding: 40px 20px;
+    }
+
+    .core-areas .section-heading {
+        margin-bottom: 25px;
+    }
+
+    .areas-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .area-card {
+        padding: 24px;
+    }
+}
+
+/* GREEN DIVIDER UNDER SECTION HEADING */
+
+.core-areas .section-heading h2 {
+    position: relative;
+    display: table;
+    margin: 0 auto 22px;
+    padding-bottom: 16px;
+}
+
+.core-areas .section-heading h2::after {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 3px;
+    background: #168447;
+    border-radius: 5px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+/* HERO SECTION TEXT ALIGNMENT */
+
+.hero-content {
+    text-align: left;
+}
+
+.hero h1,
+.hero-text {
+    text-align: left;
+}
+
+.hero-text {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.hero-buttons {
+    justify-content: flex-start;
+}
+
+
+/* HERO SECTION: FORCE CONSISTENT LEFT ALIGNMENT */
+
+.hero-content {
+    text-align: left !important;
+    align-items: flex-start !important;
+}
+
+.hero-content .hero-eyebrow,
+.hero-content h1,
+.hero-content .hero-text,
+.hero-content p {
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.hero-content h1 {
+    width: 100%;
+}
+
+.hero-content .hero-text {
+    max-width: 650px;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: flex-start !important;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.hero-buttons a {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+
+/* WHAT WE DO CARDS: VISUAL POLISH */
+
+.area-card {
+    background: #ffffff;
+    border: 1px solid #e4ece6;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 5px 18px rgba(20, 60, 35, 0.05);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.area-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(20, 60, 35, 0.10);
+}
+
+.area-card h3 {
+    color: #176b3a;
+    font-size: 20px;
+    margin: 0 0 12px;
+}
+
+.area-card p {
+    color: #4d5951;
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 0;
+}
+
+@media (max-width: 700px) {
+    .area-card {
+        padding: 24px;
+    }
+
+    .area-card h3 {
+        font-size: 18px;
+    }
+}
+
+
+/* PROJECTS SECTION: VISUAL REFINEMENT */
+
+.projects {
+    padding: 65px 7%;
+    background: #ffffff;
+}
+
+.projects .section-heading {
+    max-width: 720px;
+    margin: 0 auto 35px;
+    text-align: center;
+}
+
+.projects .section-heading h2 {
+    color: #176b3a;
+}
+
+.project-grid {
+    max-width: 1150px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+    align-items: stretch;
+}
+
+.project-card {
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid #e2ebe4;
+    border-radius: 12px;
+    box-shadow: 0 5px 18px rgba(20, 60, 35, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(20, 60, 35, 0.11);
+}
+
+.project-content {
+    padding: 26px;
+}
+
+.project-content h3 {
+    color: #176b3a;
+    margin-bottom: 12px;
+}
+
+.project-content p {
+    color: #4d5951;
+    line-height: 1.8;
+}
+
+.project-content a {
+    display: inline-block;
+    margin-top: 12px;
+    color: #176b3a;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.project-content a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+    .projects {
+        padding: 40px 20px;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .project-content {
+        padding: 22px;
+    }
+}
+
+/* HEADER HEIGHT ADJUSTMENT */
+
+.navbar {
+    min-height: 95px;
+    height: auto;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 700px) {
+    .navbar {
+        min-height: 85px;
+        height: auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}
+
+
+/* FINAL NAVIGATION AND AGRICULTURE ARTICLE STYLES */
+
+/* Standard navigation */
+.navbar {
+    min-height: 95px;
+    height: auto;
+    padding: 12px 7%;
+    box-sizing: border-box;
+}
+
+/* Agriculture article background */
+body.agriculture-article {
+    background:
+        radial-gradient(ellipse at 12% 15%, rgba(7, 87, 43, 0.16), transparent 42%),
+        radial-gradient(ellipse at 88% 75%, rgba(23, 107, 58, 0.13), transparent 40%),
+        linear-gradient(135deg, #edf7f0, #e4f1e8, #f3f8f4);
+}
+
+/* Agriculture article layout */
+body.agriculture-article main {
+    background: transparent;
+    padding: 55px 7%;
+}
+
+body.agriculture-article .article-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(20, 70, 40, 0.07);
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .navbar {
+        min-height: 85px;
+        padding: 10px 6%;
+    }
+
+    body.agriculture-article main {
+        padding: 30px 5%;
+    }
+
+    body.agriculture-article .article-page {
+        border-radius: 10px;
+    }
+}
