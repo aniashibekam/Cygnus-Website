@@ -2073,3 +2073,51 @@ nav a.active::after {
         flex-basis: 100%;
     }
 }
+
+
+/* HOMEPAGE MOBILE AND IMAGE REFINEMENTS */
+
+/* More balanced spacing */
+.core-areas {
+    padding: 75px 7%;
+}
+
+.projects {
+    padding: 75px 7%;
+}
+
+.core-areas .section-heading {
+    margin-bottom: 35px;
+}
+
+/* Consistent project image proportions */
+.project-image {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+    background-size: cover;
+    background-position: center;
+}
+
+@media (max-width: 700px) {
+    .core-areas {
+        padding: 50px 20px;
+    }
+
+    .projects {
+        padding: 50px 20px;
+    }
+
+    .core-areas .section-heading {
+        margin-bottom: 28px;
+    }
+
+    .project-image {
+        aspect-ratio: 16 / 9;
+        padding: 20px;
+    }
+
+    .project-content {
+        padding: 24px;
+    }
+}
