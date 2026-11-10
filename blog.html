@@ -247,53 +247,7 @@
     </footer>
 
     <script>
-        // MOBILE NAVIGATION
-
-        const menuToggle = document.getElementById("menuToggle");
-        const mainNav = document.getElementById("mainNav");
-
-        function closeMobileMenu() {
-            mainNav.classList.remove("open");
-            menuToggle.setAttribute("aria-expanded", "false");
-            menuToggle.setAttribute("aria-label", "Open navigation menu");
-            menuToggle.textContent = "☰";
-        }
-
-        menuToggle.addEventListener("click", function(event) {
-            event.stopPropagation();
-
-            const isOpen = mainNav.classList.toggle("open");
-
-            menuToggle.setAttribute("aria-expanded", isOpen);
-            menuToggle.setAttribute(
-                "aria-label",
-                isOpen ? "Close navigation menu" : "Open navigation menu"
-            );
-
-            menuToggle.textContent = isOpen ? "✕" : "☰";
-        });
-
-        mainNav.querySelectorAll("a").forEach(link => {
-            link.addEventListener("click", closeMobileMenu);
-        });
-
-        document.addEventListener("click", function(event) {
-            if (
-                mainNav.classList.contains("open") &&
-                !mainNav.contains(event.target) &&
-                !menuToggle.contains(event.target)
-            ) {
-                closeMobileMenu();
-            }
-        });
-
-        document.addEventListener("keydown", function(event) {
-            if (event.key === "Escape") {
-                closeMobileMenu();
-            }
-        });
-
-
+    
         // BLOG SYSTEM
 
         let allBlogPosts = [];
@@ -598,6 +552,6 @@
         loadBlogPosts();
 
     </script>
-
+<script src="js/navigation.js"></script>
 </body>
 </html>

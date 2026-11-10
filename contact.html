@@ -11,23 +11,27 @@
 
 <body>
 
-    <header class="navbar">
+<header class="navbar">
+    <div class="logo">
+        CYGNUS ALLIANCES <br> NIG LTD
+    </div>
 
-        <div class="logo">
-            CYGNUS ALLIANCES<br> NIG LTD
-        </div>
+    <button class="menu-toggle" id="menuToggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mainNav">
+        ☰
+    </button>
 
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="projects.html">Projects</a>
-            <a href="contact.html" class="active" aria-current="page">Contact</a>
-            <a href="blog.html">Blog</a>
-            <a href="team.html">Team</a>
-        </nav>
-
-    </header>
-
+    <nav id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html" class="active" aria-current="page">Contact</a>
+        <a href="blog.html">Blog</a>
+        <a href="team.html">Team</a>
+    </nav>
+</header>
 
     <main>
 
@@ -165,6 +169,6 @@
         </div>
 
     </footer>
-
+<script src="js/navigation.js"></script>
 </body>
 </html>

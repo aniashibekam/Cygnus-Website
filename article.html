@@ -472,27 +472,28 @@
     <!-- NAVIGATION -->
 
     <header class="navbar">
-        <a href="index.html" class="logo">
-            CYGNUS ALLIANCES <br> NIG LTD
-        </a>
+    <a href="index.html" class="logo">
+        CYGNUS ALLIANCES <br> NIG LTD
+    </a>
 
-        <button class="menu-toggle"
-                id="menuToggle"
-                aria-label="Open navigation menu"
-                aria-expanded="false">
-            ☰
-        </button>
+    <button class="menu-toggle"
+            id="menuToggle"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="mainNav">
+        ☰
+    </button>
 
-        <nav id="mainNav">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="projects.html">Projects</a>
-            <a href="contact.html">Contact</a>
-            <a href="blog.html" class="active" aria-current="page">Blog</a>
-            <a href="team.html">Team</a>
-        </nav>
-    </header>
-
+    <nav id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+        <a href="blog.html" class="active" aria-current="page">Blog</a>
+        <a href="team.html">Team</a>
+    </nav>
+</header>
     <!-- ARTICLE -->
 
     <main class="article-area">
@@ -551,21 +552,7 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
     <script>
-        // MOBILE NAVIGATION
-
-        const menuToggle = document.getElementById("menuToggle");
-        const mainNav = document.getElementById("mainNav");
-
-        menuToggle.addEventListener("click", () => {
-            const isOpen = mainNav.classList.toggle("open");
-            menuToggle.setAttribute("aria-expanded", isOpen);
-            menuToggle.setAttribute(
-                "aria-label",
-                isOpen ? "Close navigation menu" : "Open navigation menu"
-            );
-            menuToggle.textContent = isOpen ? "✕" : "☰";
-        });
-
+    
         // ARTICLE LOADING
 
         async function loadArticle() {
@@ -725,6 +712,6 @@
 
         loadArticle();
     </script>
-
+<script src="js/navigation.js"></script>
 </body>
 </html>
