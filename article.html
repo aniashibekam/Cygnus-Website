@@ -22,88 +22,16 @@
             color: #26352c;
         }
 
-        /* NAVIGATION */
-
-        .navbar {
-            min-height: 75px;
-            padding: 0 7%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(255,255,255,0.97);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid #e8eee9;
-        }
-
-        .logo {
-            font-size: 22px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            line-height: 1.35;
-            color: #168447;
-            text-decoration: none;
-        }
-
-        .navbar nav {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-
-        .navbar nav a {
-            position: relative;
-            color: #26352c;
-            font-size: 15px;
-            text-decoration: none;
-            transition: color 0.25s ease;
-        }
-
-        .navbar nav a:hover,
-        .navbar nav a.active {
-            color: #168447;
-        }
-
-        .navbar nav a.active {
-            font-weight: 700;
-        }
-
-        .navbar nav a::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -7px;
-            width: 0;
-            height: 2px;
-            background: #168447;
-            transition: width 0.25s ease;
-        }
-
-        .navbar nav a:hover::after,
-        .navbar nav a.active::after {
-            width: 100%;
-        }
-
-        .menu-toggle {
-            display: none;
-            border: 0;
-            background: transparent;
-            color: #176b3a;
-            font-size: 27px;
-            cursor: pointer;
-        }
-
+        
         /* ARTICLE BACKGROUND */
 
         .article-area {
             min-height: 70vh;
             padding: 48px 20px 75px;
             background:
-                radial-gradient(ellipse at 10% 5%, rgba(45,130,75,0.10), transparent 38%),
-                radial-gradient(ellipse at 90% 85%, rgba(23,107,58,0.08), transparent 35%),
-                #f5f8f5;
+            radial-gradient(circle at 10% 15%, rgba(46, 160, 90, 0.28), transparent 35%),
+            radial-gradient(circle at 90% 80%, rgba(20, 100, 55, 0.30), transparent 40%),
+            linear-gradient(135deg, #e1f2e5 0%, #b9dfc3 45%, #d5edda 100%);
         }
 
         .article-page {
