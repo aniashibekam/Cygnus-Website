@@ -283,5 +283,21 @@ if (starviaStatus) {
     }
 }
 </script>
+
+
+<script>
+const starviaStatus = new URLSearchParams(window.location.search);
+
+if (starviaStatus.get("status") === "success") {
+    alert("Your enquiry has been submitted successfully! Thank you for contacting Starvia.");
+
+    window.history.replaceState(
+        {},
+        document.title,
+        window.location.pathname + "#contact"
+    );
+}
+</script>
+
 </body>
 </html>
