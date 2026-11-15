@@ -1,0 +1,287 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="images/cygnus-logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team | Cygnus Alliances Nig Ltd</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="navbar">
+    <a href="index.html" class="logo">
+        <img src="images/cygnus-logo.png" alt="Cygnus Alliances Logo">
+
+        <span class="logo-text">
+            <span class="logo-name">
+                Cygnus Alliances <strong>Nig Ltd</strong>
+            </span>
+            <span class="logo-tagline">
+                Integrated Socioeconomic Innovation
+            </span>
+        </span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mainNav">
+        ☰
+    </button>
+
+    <nav id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+        <a href="blog.html">Blog</a>
+        <a href="team.html" >Team</a>
+        <a href="starvia.html" class="active" aria-current="page">Starvia</a>
+    </nav>
+</header>
+
+    
+<main class="starvia-page">
+
+    <section class="starvia-hero">
+        <div class="starvia-hero-content">
+            <p class="eyebrow">A COMMUNITY DEVELOPMENT INITIATIVE</p>
+            <h1>STARVIA</h1>
+            <h2>Building stronger communities. Creating lasting possibilities.</h2>
+            <p>
+                Advancing inclusive development through education,
+                youth empowerment, sustainable livelihoods and
+                community-driven solutions.
+            </p>
+            <a href="#partnerships" class="starvia-button">
+                Explore Partnerships
+            </a>
+        </div>
+    </section>
+
+    <section class="starvia-section">
+        <div class="section-heading">
+            <p class="eyebrow green">WHO WE ARE</p>
+            <h2>About Starvia</h2>
+            <p>
+                Starvia is a community development initiative
+                focused on creating opportunities, strengthening
+                local capacity and supporting sustainable
+                socioeconomic development.
+            </p>
+        </div>
+    </section>
+
+    <section class="starvia-section starvia-focus">
+        <div class="section-heading">
+            <p class="eyebrow green">OUR WORK</p>
+            <h2>Areas of Focus</h2>
+        </div>
+
+        <div class="starvia-focus-grid">
+            <article>
+                <h3>Education</h3>
+                <p>Inclusive education, school support and learning opportunities.</p>
+            </article>
+
+            <article>
+                <h3>Youth Development</h3>
+                <p>Skills development, leadership, entrepreneurship and innovation.</p>
+            </article>
+
+            <article>
+                <h3>Agriculture</h3>
+                <p>Sustainable agriculture, food security and livelihood opportunities.</p>
+            </article>
+
+            <article>
+                <h3>Environment &amp; WASH</h3>
+                <p>Clean water, sanitation, environmental protection and renewable energy.</p>
+            </article>
+
+            <article>
+                <h3>Digital Inclusion</h3>
+                <p>Digital literacy, STEM education and access to technology.</p>
+            </article>
+
+            <article>
+                <h3>Community Development</h3>
+                <p>Local participation, inclusion and community-led initiatives.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="starvia-section">
+        <div class="section-heading">
+            <p class="eyebrow green">INFORMATION CENTRE</p>
+            <h2>Documents &amp; Resources</h2>
+            <p>
+                Access organisational information and documents
+                relevant to our work and partnerships.
+            </p>
+        </div>
+
+        <div class="starvia-documents">
+
+            <a href="documents/starvia-profile.pdf" target="_blank">
+                <span>Organisational Profile</span>
+                <span>View Document ↗</span>
+            </a>
+
+            <a href="documents/starvia-constitution.pdf" target="_blank">
+                <span>Constitution</span>
+                <span>View Document ↗</span>
+            </a>
+
+            <a href="documents/starvia-partnership-proposal.pdf" target="_blank">
+                <span>Partnership Proposal</span>
+                <span>View Document ↗</span>
+            </a>
+
+        </div>
+    </section>
+
+    <section class="starvia-section starvia-registration">
+        <div class="section-heading">
+            <p class="eyebrow green">ORGANISATIONAL REGISTRATION</p>
+            <h2>CAC Registration Certificate</h2>
+            <p>
+                Official registration documentation will be
+                presented here for institutional reference.
+            </p>
+        </div>
+
+        <div class="starvia-cac-placeholder">
+            <div>
+                <span>+</span>
+                <h3>CAC Certificate Placeholder</h3>
+                <p>Registration certificate image to be added.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="starvia-contact" id="contact">
+    <div class="starvia-contact-content">
+        <div id="starvia-form-status" role="status" aria-live="polite"></div>
+        <p class="eyebrow green">GET IN TOUCH</p>
+        <h2>Contact Starvia</h2>
+
+        <p class="starvia-contact-intro">
+            Have a question, partnership idea or development initiative?
+            Send us a message. We would be glad to hear from you.
+        </p>
+
+        <form action="starvia-submit.php" method="POST"
+              class="starvia-contact-form">
+
+            <div class="starvia-form-group">
+                <label for="starvia-email">Your Email Address</label>
+                <input
+                    type="email"
+                    id="starvia-email"
+                    name="email"
+                    placeholder="Enter your email address"
+                    required
+                    maxlength="254">
+            </div>
+
+            <div class="starvia-form-group">
+                <label for="starvia-message">Your Message</label>
+                <textarea
+                    id="starvia-message"
+                    name="message"
+                    rows="6"
+                    placeholder="Write your enquiry here..."
+                    required
+                    maxlength="5000"></textarea>
+            </div>
+
+            <!-- Spam protection field -->
+            <div class="starvia-honeypot" aria-hidden="true">
+                <label for="website">Leave this field empty</label>
+                <input type="text" id="website" name="website"
+                       tabindex="-1" autocomplete="off">
+            </div>
+
+            <button type="submit" class="starvia-submit-button">
+                Send Enquiry
+            </button>
+
+        </form>
+
+        <div class="starvia-email-alternative">
+            <p>Prefer to contact us directly?</p>
+            <a href="mailto:starvia@cygnusx.io">
+                Email Us: starvia@cygnusx.io
+            </a>
+        </div>
+
+    </div>
+</section>
+
+</main>
+
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div class="footer-brand">
+                <div class="logo">CYGNUS</div>
+
+                <p>
+                    Integrated Socioeconomic Innovation.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+                <a href="blog.html">Blog</a>
+                <a href="team.html">Team</a>
+                <a href="starvia.html">Starvia</a>
+
+            </div>
+
+            <div class="footer-company">
+                <p>Cygnus Alliances Nig Ltd</p>
+                <p>Nigeria</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>
+                © 2026 Cygnus Alliances Nig Ltd. All rights reserved.
+            </p>
+        </div>
+
+    </footer>
+<script src="js/navigation.js"></script>
+
+<script>
+const starviaParams = new URLSearchParams(window.location.search);
+const starviaStatus = document.getElementById("starvia-form-status");
+
+if (starviaStatus) {
+    if (starviaParams.get("status") === "success") {
+        starviaStatus.textContent =
+            "Thank you. Your enquiry has been submitted successfully.";
+        starviaStatus.style.color = "#176b3a";
+    } else if (starviaParams.get("status") === "error") {
+        starviaStatus.textContent =
+            "We couldn't process your enquiry. Please try again or email us directly.";
+        starviaStatus.style.color = "#b42318";
+    } else if (starviaParams.get("status") === "invalid") {
+        starviaStatus.textContent =
+            "Please enter a valid email address and message.";
+        starviaStatus.style.color = "#b42318";
+    }
+}
+</script>
+</body>
+</html>
