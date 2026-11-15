@@ -55,7 +55,7 @@
                 youth empowerment, sustainable livelihoods and
                 community-driven solutions.
             </p>
-            <a href="#partnerships" class="starvia-button">
+            <a href="#contact" class="starvia-button">
                 Explore Partnerships
             </a>
         </div>
@@ -286,9 +286,10 @@ if (starviaStatus) {
 
 
 <script>
-const starviaStatus = new URLSearchParams(window.location.search);
+const starviaSubmissionStatus = new URLSearchParams(window.location.search);
 
-if (starviaStatus.get("status") === "success") {
+if (starviaSubmissionStatus.get("status") === "success") {
+
     alert("Your enquiry has been submitted successfully! Thank you for contacting Starvia.");
 
     window.history.replaceState(
