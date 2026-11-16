@@ -1,656 +1,233 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <link rel="icon" type="image/png" href="images/cygnus-logo.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Cygnus | Article</title>
     <meta name="description" content="Read the latest insights from Cygnus Alliances Nig Ltd.">
-
+    <title>Article | Cygnus Alliances Nig Ltd</title>
     <link rel="stylesheet" href="css/style.css">
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            background: #f5f8f5;
-            color: #26352c;
-        }
-
-        
-        /* ARTICLE BACKGROUND */
-
-        .article-area {
-            min-height: 70vh;
-            padding: 48px 20px 75px;
-            background:
-            radial-gradient(circle at 10% 15%, rgba(46, 160, 90, 0.28), transparent 35%),
-            radial-gradient(circle at 90% 80%, rgba(20, 100, 55, 0.30), transparent 40%),
-            linear-gradient(135deg, #e1f2e5 0%, #b9dfc3 45%, #d5edda 100%);
-        }
-
-        .article-page {
-            width: 100%;
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 48px 58px;
-            background: #fff;
-            border: 1px solid #e7eee8;
-            border-radius: 15px;
-            box-shadow: 0 15px 45px rgba(20,55,32,0.07);
-        }
-
-        .article-top {
-            margin-bottom: 30px;
-        }
-
-        .article-back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: #168447;
-            font-size: 14px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: gap 0.2s ease;
-        }
-
-        .article-back-link:hover {
-            gap: 13px;
-        }
-
-        .article-meta {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 17px;
-            color: #718078;
-            font-size: 13px;
-        }
-
-        .article-category {
-            padding: 7px 12px;
-            color: #176b3a;
-            background: #edf6ef;
-            border-radius: 30px;
-            font-weight: 700;
-        }
-
-        .article-page h1 {
-            margin: 0 0 25px;
-            color: #153c27;
-            font-size: clamp(30px, 4.5vw, 44px);
-            line-height: 1.2;
-            letter-spacing: -1px;
-            overflow-wrap: anywhere;
-        }
-
-        .article-cover {
-            display: block;
-            width: 100%;
-            max-height: 440px;
-            margin: 0 0 34px;
-            object-fit: cover;
-            border-radius: 11px;
-        }
-
-        /* ARTICLE CONTENT */
-
-        .article-body {
-            color: #35443a;
-            font-size: 17px;
-            line-height: 1.9;
-            overflow-wrap: anywhere;
-        }
-
-        .article-body h2 {
-            margin: 38px 0 13px;
-            color: #17452b;
-            font-size: 26px;
-            line-height: 1.35;
-        }
-
-        .article-body h3 {
-            margin: 30px 0 12px;
-            color: #17452b;
-            font-size: 21px;
-        }
-
-        .article-body p {
-            margin: 0 0 23px;
-        }
-
-        .article-body ul,
-        .article-body ol {
-            margin: 0 0 24px;
-            padding-left: 25px;
-        }
-
-        .article-body li {
-            margin-bottom: 10px;
-        }
-
-        .article-body img {
-            max-width: 100%;
-            height: auto;
-            margin: 15px 0;
-            border-radius: 9px;
-        }
-
-        .article-body blockquote {
-            margin: 30px 0;
-            padding: 18px 23px;
-            border-left: 4px solid #23834b;
-            background: #f3f8f4;
-            color: #3e5c47;
-        }
-
-        .article-body a {
-            color: #176b3a;
-            text-decoration: underline;
-            text-underline-offset: 3px;
-        }
-
-        /* PREVIOUS AND NEXT */
-
-        .article-navigation {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 50px;
-            padding-top: 27px;
-            border-top: 1px solid #e5ece6;
-        }
-
-        .article-navigation a {
-            padding: 17px;
-            background: #f5f8f5;
-            border: 1px solid #e5ece6;
-            border-radius: 9px;
-            color: #176b3a;
-            text-decoration: none;
-            transition: background 0.2s ease;
-        }
-
-        .article-navigation a:hover {
-            background: #edf6ef;
-        }
-
-        .article-navigation span {
-            display: block;
-            margin-bottom: 7px;
-            color: #7b8980;
-            font-size: 12px;
-        }
-
-        .article-navigation strong {
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        .next-article {
-            text-align: right;
-        }
-
-        /* COMMENTS */
-
-        .comments-section {
-            margin-top: 42px;
-            padding-top: 28px;
-            border-top: 1px solid #e5ece6;
-        }
-
-        .comments-section h2 {
-            margin: 0 0 10px;
-            color: #153c27;
-            font-size: 22px;
-        }
-
-        .comments-section p {
-            color: #718078;
-            line-height: 1.7;
-        }
-
-        /* PRIVATE FEEDBACK */
-
-        .private-feedback {
-            width: calc(100% - 40px);
-            max-width: 850px;
-            margin: 0 auto 70px;
-            padding: 35px 40px;
-            background: white;
-            border: 1px solid #e7eee8;
-            border-radius: 13px;
-        }
-
-        .private-feedback h2 {
-            margin: 0 0 10px;
-            color: #153c27;
-            font-size: 23px;
-        }
-
-        .private-feedback p {
-            color: #718078;
-            line-height: 1.7;
-        }
-
-        .private-feedback form {
-            display: grid;
-            gap: 10px;
-            margin-top: 24px;
-        }
-
-        .private-feedback label {
-            color: #26352c;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .private-feedback input,
-        .private-feedback textarea {
-            width: 100%;
-            padding: 13px 14px;
-            margin-bottom: 12px;
-            border: 1px solid #dce6de;
-            border-radius: 7px;
-            background: #fbfdfb;
-            font: inherit;
-        }
-
-        .private-feedback input:focus,
-        .private-feedback textarea:focus {
-            outline: none;
-            border-color: #168447;
-        }
-
-        .private-feedback button {
-            width: fit-content;
-            padding: 13px 25px;
-            border: none;
-            border-radius: 6px;
-            background: #168447;
-            color: white;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background 0.2s ease;
-        }
-
-        .private-feedback button:hover {
-            background: #105d32;
-        }
-
-        /* FOOTER */
-
-        .site-footer {
-            padding: 35px 7%;
-            background: #0b2114;
-            color: #d5e2d8;
-            text-align: center;
-        }
-
-        .site-footer strong {
-            display: block;
-            margin-bottom: 8px;
-            color: white;
-            letter-spacing: 1px;
-        }
-
-        .site-footer p {
-            margin: 7px 0;
-            color: #b2c4b7;
-            font-size: 13px;
-        }
-
-        /* ERROR MESSAGE */
-
-        .article-error {
-            text-align: center;
-            padding: 35px 10px;
-        }
-
-        .article-error h1 {
-            font-size: 30px;
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 800px) {
-            .navbar {
-                min-height: 95px;
-                padding: 0 5%;
-            }
-
-            .logo {
-                font-size: 18px;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .navbar nav {
-                display: none;
-                position: absolute;
-                top: 85px;
-                left: 0;
-                right: 0;
-                flex-direction: column;
-                align-items: stretch;
-                gap: 0;
-                padding: 10px 5% 20px;
-                background: white;
-                border-bottom: 1px solid #e8eee9;
-                box-shadow: 0 12px 20px rgba(0,0,0,0.06);
-            }
-
-            .navbar nav.open {
-                display: flex;
-            }
-
-            .navbar nav a {
-                padding: 13px 0;
-            }
-
-            .navbar nav a::after {
-                display: none;
-            }
-
-            .article-area {
-                padding: 25px 12px 45px;
-            }
-
-            .article-page {
-                padding: 30px 23px;
-            }
-
-            .article-page h1 {
-                font-size: 31px;
-            }
-
-            .article-body {
-                font-size: 16px;
-                line-height: 1.8;
-            }
-
-            .private-feedback {
-                width: calc(100% - 24px);
-                padding: 27px 22px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .article-navigation {
-                grid-template-columns: 1fr;
-            }
-
-            .next-article {
-                text-align: left;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/blog-article.css">
 </head>
-
 <body>
-
-    <!-- NAVIGATION -->
-
-    <header class="navbar">
+<header class="navbar">
     <a href="index.html" class="logo">
         <img src="images/cygnus-logo.png" alt="Cygnus Alliances Logo">
-
         <span class="logo-text">
-            <span class="logo-name">
-                Cygnus Alliances <strong>Nig Ltd</strong>
-            </span>
-            <span class="logo-tagline">
-                Integrated Socioeconomic Innovation
-            </span>
+            <span class="logo-name">Cygnus Alliances <strong>Nig Ltd</strong></span>
+            <span class="logo-tagline">Integrated Socioeconomic Innovation</span>
         </span>
     </a>
-
-    <button class="menu-toggle"
-            id="menuToggle"
-            type="button"
-            aria-label="Open navigation menu"
-            aria-expanded="false"
-            aria-controls="mainNav">
-        ☰
-    </button>
-
+    <button class="menu-toggle" id="menuToggle" type="button"
+            aria-label="Open navigation menu" aria-expanded="false"
+            aria-controls="mainNav">☰</button>
     <nav id="mainNav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html">Contact</a>
+        <a href="index.html">Home</a><a href="about.html">About</a>
+        <a href="projects.html">Projects</a><a href="contact.html">Contact</a>
         <a href="blog.html" class="active" aria-current="page">Blog</a>
-        <a href="team.html">Team</a>
-        <a href="starvia.html">Starvia</a>
+        <a href="team.html">Team</a><a href="starvia.html">Starvia</a>
     </nav>
 </header>
-    <!-- ARTICLE -->
 
-    <main class="article-area">
-        <article class="article-page" id="article">
-            <p>Loading article...</p>
-        </article>
-    </main>
+<main class="cy-article-area">
+    <article class="cy-article-page" id="article" aria-live="polite">
+        <p class="cy-article-loading">Loading article...</p>
+    </article>
+</main>
 
-    <!-- PRIVATE FEEDBACK -->
+<section class="private-feedback cy-private-feedback">
+    <h2>Send Private Feedback</h2>
+    <p>Your message will be sent privately to the Cygnus team. It will not appear publicly on this article.</p>
+    <form name="cygnus-article-feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="cygnus-article-feedback">
+        <p hidden><label>Leave this field empty: <input name="bot-field"></label></p>
+        <input type="hidden" name="article" id="feedback-article">
+        <label for="feedback-name">Your name</label>
+        <input id="feedback-name" type="text" name="name" autocomplete="name" required>
+        <label for="feedback-email">Your email</label>
+        <input id="feedback-email" type="email" name="email" autocomplete="email" required>
+        <label for="feedback-message">Your feedback</label>
+        <textarea id="feedback-message" name="message" rows="5" required></textarea>
+        <button type="submit">Send Feedback</button>
+    </form>
+</section>
 
-    <section class="private-feedback">
-        <h2>Send Private Feedback</h2>
-        <p>Your message will be sent privately to the Cygnus team. It will not appear publicly on this article.</p>
-
-        <form name="cygnus-article-feedback"
-              method="POST"
-              data-netlify="true"
-              netlify-honeypot="bot-field">
-
-            <input type="hidden" name="form-name"
-                   value="cygnus-article-feedback">
-
-            <p hidden>
-                <label>Leave this field empty:
-                    <input name="bot-field">
-                </label>
-            </p>
-
-            <input type="hidden" name="article" id="feedback-article">
-
-            <label for="feedback-name">Your name</label>
-            <input id="feedback-name" type="text"
-                   name="name" required>
-
-            <label for="feedback-email">Your email</label>
-            <input id="feedback-email" type="email"
-                   name="email" required>
-
-            <label for="feedback-message">Your feedback</label>
-            <textarea id="feedback-message"
-                      name="message" rows="5" required></textarea>
-
-            <button type="submit">Send Feedback</button>
-        </form>
-    </section>
-
-    <!-- FOOTER -->
-
-    <footer class="site-footer">
-        <strong>CYGNUS ALLIANCES NIG LTD</strong>
-        <p>Integrated Socioeconomic Innovation</p>
-        <p>Nigeria</p>
+<footer class="cygnus-footer">
+    <div class="footer-content">
+        <div class="footer-brand">
+            <div class="footer-logo">CYGNUS</div>
+            <p class="footer-tagline">Integrated Socioeconomic Innovation.</p>
+            <p class="footer-description">Building sustainable solutions through innovation, technology, agriculture, education and community development.</p>
+        </div>
+        <div class="footer-navigation">
+            <h3>Explore</h3>
+            <div class="footer-links">
+                <a href="index.html">Home</a><a href="about.html">About Us</a>
+                <a href="projects.html">Our Projects</a><a href="team.html">Our Team</a>
+                <a href="blog.html">Blog</a><a href="starvia.html">Starvia</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+        <div class="footer-contact">
+            <h3>Get in Touch</h3>
+            <div class="footer-contact-item"><span class="footer-contact-icon">✉</span><div><span class="footer-label">Email Us</span><a href="mailto:info@cygnusx.io">info@cygnusx.io</a></div></div>
+            <div class="footer-contact-item"><span class="footer-contact-icon">⌖</span><div><span class="footer-label">Location</span><p>Nigeria</p></div></div>
+            <div class="footer-company">Cygnus Alliances Nig Ltd</div>
+        </div>
+    </div>
+    <div class="footer-social">
+        <h3>Follow Cygnus</h3>
+        <div class="footer-social-links">
+            <a href="https://www.facebook.com/share/1QagBHySaq/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Cygnus on Facebook"><span>f</span></a>
+            <a href="YOUR_X_PROFILE_URL" target="_blank" rel="noopener noreferrer" aria-label="Cygnus on X"><span>𝕏</span></a>
+            <a href="https://youtube.com/@cygnusalliances?si=4Abw4vh-zBStGybl" target="_blank" rel="noopener noreferrer" aria-label="Cygnus on YouTube"><span>▶</span></a>
+        </div>
+    </div>
+    <div class="footer-bottom">
         <p>© 2026 Cygnus Alliances Nig Ltd. All rights reserved.</p>
-    </footer>
+        <span>Integrated Socioeconomic Innovation.</span>
+    </div>
+</footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
+<script>
+(() => {
+    "use strict";
 
-    <script>
-    
-        // ARTICLE LOADING
+    const container = document.getElementById("article");
+    const feedbackArticle = document.getElementById("feedback-article");
 
-        async function loadArticle() {
-            const container = document.getElementById("article");
-            const slug = new URLSearchParams(window.location.search).get("slug");
+    function escapeHTML(value) {
+        return String(value).replace(/[&<>"']/g, character => ({
+            "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+        })[character]);
+    }
 
-            if (!slug) {
-                showError("No article was selected.");
+    function safeURL(value) {
+        if (!value) return "";
+        try {
+            const url = new URL(String(value), window.location.href);
+            return ["http:", "https:"].includes(url.protocol) ? url.href : "";
+        } catch {
+            return "";
+        }
+    }
+
+    function validDate(value) {
+        const timestamp = Date.parse(value || "");
+        return Number.isFinite(timestamp) ? new Date(timestamp) : null;
+    }
+
+    function showError(message) {
+        container.innerHTML = `<div class="cy-article-error">
+            <p class="eyebrow green">CYGNUS INSIGHTS</p>
+            <h1>Article unavailable</h1>
+            <p>${escapeHTML(message)}</p>
+            <a class="article-back-link" href="blog.html">← Back to Blog</a>
+        </div>`;
+        document.querySelector(".cy-private-feedback").hidden = true;
+    }
+
+    function renderMarkdown(markdown) {
+        const source = String(markdown || "").replace(/^\s*#\s+.+(?:\r?\n)+/, "");
+        if (!window.marked || !window.DOMPurify) {
+            return `<p>${escapeHTML(source).replace(/\r?\n/g, "<br>")}</p>`;
+        }
+        const rendered = window.marked.parse(source, { breaks: false, gfm: true });
+        return window.DOMPurify.sanitize(rendered, {
+            USE_PROFILES: { html: true },
+            ADD_ATTR: ["target", "rel"]
+        });
+    }
+
+    function renderArticleNavigation(posts, currentIndex) {
+        const previousPost = posts[currentIndex - 1];
+        const nextPost = posts[currentIndex + 1];
+
+        const previous = previousPost
+            ? `<a href="article.html?slug=${encodeURIComponent(previousPost.slug)}">
+                <span>← Previous article</span><strong>${escapeHTML(previousPost.title || "Untitled")}</strong>
+               </a>` : '<span class="cy-article-nav-empty"></span>';
+
+        const next = nextPost
+            ? `<a class="next-article" href="article.html?slug=${encodeURIComponent(nextPost.slug)}">
+                <span>Next article →</span><strong>${escapeHTML(nextPost.title || "Untitled")}</strong>
+               </a>` : '<span class="cy-article-nav-empty"></span>';
+
+        return `<nav class="article-navigation" aria-label="More articles">${previous}${next}</nav>`;
+    }
+
+    async function loadArticle() {
+        const slug = new URLSearchParams(window.location.search).get("slug");
+        if (!slug) {
+            showError("No article was selected.");
+            return;
+        }
+
+        try {
+            const response = await fetch("data/posts.json?v=" + Date.now(), { cache: "no-store" });
+            if (!response.ok) throw new Error(`Posts request failed (${response.status}).`);
+
+            const data = await response.json();
+            if (!data || !Array.isArray(data.posts)) throw new Error("The blog data format is incorrect.");
+
+            const posts = data.posts.slice().sort((a, b) =>
+                (Date.parse(b.date || "") || 0) - (Date.parse(a.date || "") || 0)
+            );
+            const postIndex = posts.findIndex(item => String(item.slug || "") === slug);
+
+            if (postIndex < 0) {
+                showError("This article may have been moved or is no longer available.");
                 return;
             }
 
-            try {
-                const response = await fetch(
-                    "data/posts.json?v=" + Date.now(),
-                    { cache: "no-store" }
-                );
+            const post = posts[postIndex];
+            const titleText = String(post.title || "Untitled");
+            const title = escapeHTML(titleText);
+            const category = escapeHTML(post.category || "Insights");
+            const dateObject = validDate(post.date);
+            const dateLabel = dateObject ? dateObject.toLocaleDateString("en-GB", {
+                day: "numeric", month: "long", year: "numeric"
+            }) : "";
+            const coverURL = safeURL(post.image);
+            const cover = coverURL
+                ? `<img class="article-cover" src="${escapeHTML(coverURL)}" alt="${title}" fetchpriority="high">`
+                : "";
 
-                if (!response.ok) {
-                    throw new Error("Could not load posts.");
-                }
+            document.title = `${titleText} | Cygnus Alliances Nig Ltd`;
+            document.querySelector('meta[name="description"]').setAttribute(
+                "content", String(post.excerpt || `Read ${titleText} on Cygnus Alliances Nig Ltd.`).slice(0, 155)
+            );
+            feedbackArticle.value = titleText;
 
-                const data = await response.json();
-                const posts = data.posts || [];
-
-                const postIndex = posts.findIndex(
-                    item => item.slug === slug
-                );
-
-                if (postIndex === -1) {
-                    showError("This article could not be found.");
-                    return;
-                }
-
-                const post = posts[postIndex];
-
-                document.title = post.title + " | Cygnus";
-                document.getElementById("feedback-article").value =
-                    post.title;
-
-                const title = escapeHTML(post.title || "Untitled");
-                const category = escapeHTML(post.category || "Insights");
-
-                const date = post.date
-                    ? new Date(post.date).toLocaleDateString(undefined, {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric"
-                    })
-                    : "";
-
-                const cover = post.image
-                    ? `<img class="article-cover"
-                            src="${escapeHTML(post.image)}"
-                            alt="${title}">`
-                    : "";
-
-                const rawBody = post.body || "";
-
-                const cleanedBody = rawBody.replace(
-                    /^\s*#\s+.+(?:\r?\n)+/,
-                    ""
-                );
-
-                const articleBody = window.marked
-                    ? marked.parse(cleanedBody)
-                    : `<p>${escapeHTML(cleanedBody)}</p>`;
-
-                // PREVIOUS AND NEXT POSTS
-
-                const previousPost = posts[postIndex - 1];
-                const nextPost = posts[postIndex + 1];
-
-                const navigation = `
-                    <div class="article-navigation">
-                        <div>
-                            ${previousPost ? `
-                                <a href="article.html?slug=${encodeURIComponent(previousPost.slug)}">
-                                    <span>← Previous article</span>
-                                    <strong>${escapeHTML(previousPost.title)}</strong>
-                                </a>
-                            ` : ""}
-                        </div>
-
-                        <div>
-                            ${nextPost ? `
-                                <a class="next-article"
-                                   href="article.html?slug=${encodeURIComponent(nextPost.slug)}">
-                                    <span>Next article →</span>
-                                    <strong>${escapeHTML(nextPost.title)}</strong>
-                                </a>
-                            ` : ""}
-                        </div>
-                    </div>
-                `;
-
-                container.innerHTML = `
-                    <div class="article-top">
-                        <a class="article-back-link" href="blog.html">
-                            ← Back to Blog
-                        </a>
-                    </div>
-
-                    <div class="article-meta">
-                        <span class="article-category">${category}</span>
-                        ${date ? `<span>${escapeHTML(date)}</span>` : ""}
-                    </div>
-
-                    <h1>${title}</h1>
-
-                    ${cover}
-
-                    <div class="article-body">
-                        ${articleBody}
-                    </div>
-
-                    ${navigation}
-
-                    <section id="comments" class="comments-section">
-                        <h2>Join the Conversation</h2>
-                        <p>Comments will be available here once the comment service is connected.</p>
-                    </section>
-
-                    <div style="margin-top: 28px;">
-                        <a class="article-back-link" href="blog.html">
-                            ← Explore more insights
-                        </a>
-                    </div>
-                `;
-
-            } catch (error) {
-                console.error(error);
-                showError("We couldn't load this article. Please try again later.");
-            }
-
-            function showError(message) {
-                container.innerHTML = `
-                    <div class="article-error">
-                        <h1>Article unavailable</h1>
-                        <p>${escapeHTML(message)}</p>
-                        <a class="article-back-link" href="blog.html">
-                            ← Back to Blog
-                        </a>
-                    </div>
-                `;
-            }
+            container.innerHTML = `
+                <div class="article-top">
+                    <a class="article-back-link" href="blog.html">← Back to Blog</a>
+                </div>
+                <div class="article-meta">
+                    <span class="article-category">${category}</span>
+                    ${dateLabel ? `<time datetime="${dateObject.toISOString()}">${escapeHTML(dateLabel)}</time>` : ""}
+                </div>
+                <h1>${title}</h1>
+                ${cover}
+                <div class="article-body">${renderMarkdown(post.body)}</div>
+                ${renderArticleNavigation(posts, postIndex)}
+                <section id="comments" class="comments-section">
+                    <h2>Join the Conversation</h2>
+                    <p>Public comments are not enabled yet. You can send the Cygnus team private feedback below.</p>
+                </section>
+                <div class="cy-article-more"><a class="article-back-link" href="blog.html">Explore more insights →</a></div>
+            `;
+        } catch (error) {
+            console.error("Article loading error:", error);
+            showError("We couldn't load this article. Please refresh the page or try again later.");
         }
+    }
 
-        function escapeHTML(value) {
-            return String(value).replace(/[&<>"']/g, character => ({
-                "&": "&amp;",
-                "<": "&lt;",
-                ">": "&gt;",
-                '"': "&quot;",
-                "'": "&#39;"
-            })[character]);
-        }
-
-        loadArticle();
-    </script>
+    loadArticle();
+})();
+</script>
 <script src="js/navigation.js"></script>
 </body>
 </html>

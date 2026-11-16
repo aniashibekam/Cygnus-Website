@@ -1,651 +1,287 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <link rel="icon" type="image/png" href="images/cygnus-logo.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Blog | Cygnus Alliances Nig Ltd</title>
     <meta name="description" content="Explore insights, stories and project updates from Cygnus Alliances Nig Ltd.">
-
     <link rel="stylesheet" href="css/style.css">
-
-    <style>
-        /* MOBILE NAVIGATION */
-
-        .menu-toggle {
-            display: none;
-            border: none;
-            background: transparent;
-            color: #168447;
-            font-size: 27px;
-            cursor: pointer;
-        }
-
-        @media (max-width: 800px) {
-            .navbar {
-                position: sticky;
-                top: 0;
-                z-index: 1000;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .navbar nav {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                flex-direction: column;
-                align-items: stretch;
-                gap: 0;
-                padding: 10px 5% 20px;
-                background: white;
-                border-bottom: 1px solid #e8eee9;
-                box-shadow: 0 12px 20px rgba(0,0,0,0.06);
-            }
-
-            .navbar nav.open {
-                display: flex;
-            }
-
-            .navbar nav a {
-                padding: 13px 0;
-            }
-
-            .navbar nav a::after {
-                display: none;
-            }
-        }
-
-        /* BLOG LOADING AND EMPTY STATES */
-
-        .blog-status {
-            padding: 35px 15px;
-            color: #64746a;
-            text-align: center;
-            line-height: 1.7;
-        }
-
-        .blog-status.error {
-            color: #a33b32;
-        }
-
-        .blog-load-more-wrap {
-            margin-top: 35px;
-            text-align: center;
-        }
-
-        .blog-load-more[hidden] {
-            display: none !important;
-        }
-    </style>
+    <link rel="stylesheet" href="css/blog-article.css">
 </head>
-
 <body>
-
-    <!-- NAVIGATION -->
-
-    <header class="navbar">
+<header class="navbar">
     <a href="index.html" class="logo">
         <img src="images/cygnus-logo.png" alt="Cygnus Alliances Logo">
-
         <span class="logo-text">
-            <span class="logo-name">
-                Cygnus Alliances <strong>Nig Ltd</strong>
-            </span>
-            <span class="logo-tagline">
-                Integrated Socioeconomic Innovation
-            </span>
+            <span class="logo-name">Cygnus Alliances <strong>Nig Ltd</strong></span>
+            <span class="logo-tagline">Integrated Socioeconomic Innovation</span>
         </span>
     </a>
+    <button class="menu-toggle" id="menuToggle" type="button"
+            aria-label="Open navigation menu" aria-expanded="false"
+            aria-controls="mainNav">☰</button>
+    <nav id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+        <a href="blog.html" class="active" aria-current="page">Blog</a>
+        <a href="team.html">Team</a>
+        <a href="starvia.html">Starvia</a>
+    </nav>
+</header>
 
-        <button
-            class="menu-toggle"
-            id="menuToggle"
-            type="button"
-            aria-label="Open navigation menu"
-            aria-expanded="false"
-            aria-controls="mainNav">
-            ☰
-        </button>
+<main class="cy-blog-page">
+    <section class="page-hero cy-blog-hero">
+        <div>
+            <p class="eyebrow">INSIGHTS &amp; STORIES</p>
+            <h1>Ideas That Move Communities Forward.</h1>
+            <p>Perspectives, project updates and practical ideas at the intersection of agriculture, technology, education, culture and socioeconomic development.</p>
+        </div>
+    </section>
 
-        <nav id="mainNav">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="projects.html">Projects</a>
-            <a href="contact.html">Contact</a>
-            <a href="blog.html" class="active" aria-current="page">Blog</a>
-            <a href="team.html">Team</a>
-            <a href="starvia.html">Starvia</a>
-        </nav>
+    <section class="blog-section cy-blog-section">
+        <div class="section-heading">
+            <p class="eyebrow green">FROM CYGNUS</p>
+            <h2>Latest Insights</h2>
+            <p>Stories and lessons from the work of building practical solutions and creating lasting value.</p>
+        </div>
 
-    </header>
-
-    <main>
-
-        <!-- PAGE INTRODUCTION -->
-
-        <section class="page-hero">
-            <div>
-                <p class="eyebrow">INSIGHTS &amp; STORIES</p>
-
-                <h1>Ideas That Move Communities Forward.</h1>
-
-                <p>
-                    Explore perspectives, project updates and ideas
-                    at the intersection of agriculture, technology,
-                    education, culture and socioeconomic development.
-                </p>
+        <div class="blog-archive cy-blog-archive">
+            <div class="blog-archive-heading">
+                <h3>Browse the Archive</h3>
+                <p>Find articles by date or search for a topic.</p>
             </div>
-        </section>
-
-        <!-- BLOG SECTION -->
-
-        <section class="blog-section">
-
-            <div class="section-heading">
-                <p class="eyebrow green">FROM CYGNUS</p>
-
-                <h2>Latest Insights</h2>
-
-                <p>
-                    Ideas, lessons and stories about building practical
-                    solutions and creating lasting value.
-                </p>
-            </div>
-
-            <!-- ARCHIVE FILTERS -->
-
-            <div class="blog-archive">
-
-                <div class="blog-archive-heading">
-                    <h3>Browse the Archive</h3>
-                    <p>Explore Cygnus news and insights by date.</p>
+            <div class="blog-filters">
+                <div class="cy-blog-filter-buttons" role="group" aria-label="Filter articles by date">
+                    <button class="blog-filter active" type="button" data-filter="all" aria-pressed="true">All Articles</button>
+                    <button class="blog-filter" type="button" data-filter="month" aria-pressed="false">This Month</button>
+                    <button class="blog-filter" type="button" data-filter="previous" aria-pressed="false">Previous Month</button>
                 </div>
-
-                <div class="blog-filters">
-
-                    <button class="blog-filter active" data-filter="all">
-                        All Articles
-                    </button>
-
-                    <button class="blog-filter" data-filter="month">
-                        This Month
-                    </button>
-
-                    <button class="blog-filter" data-filter="previous">
-                        Previous Month
-                    </button>
-
+                <label class="cy-blog-year-label" for="blog-year">Year
                     <select id="blog-year" aria-label="Filter articles by year">
                         <option value="all">All Years</option>
                     </select>
-
-                </div>
-
+                </label>
+                <label class="cy-blog-search-label" for="blog-search">Search
+                    <input id="blog-search" type="search" placeholder="Search articles..." autocomplete="off">
+                </label>
             </div>
-
-            <!-- ARTICLES APPEAR HERE -->
-
-            <div class="blog-grid" id="blog-grid">
-
-                <p class="blog-status" id="blog-status">
-                    Loading articles...
-                </p>
-
-            </div>
-
-            <!-- LOAD MORE IS OUTSIDE THE GRID -->
-
-            <div class="blog-load-more-wrap">
-                <button
-                    id="blog-load-more"
-                    class="blog-load-more"
-                    type="button"
-                    hidden>
-                    Load More Articles
-                </button>
-            </div>
-
-            <p id="blog-results-count" aria-live="polite"></p>
-
-        </section>
-
-    </main>
-
-    <!-- FOOTER -->
-
-    <footer class="cygnus-footer">
-
-    <div class="footer-content">
-
-        <!-- BRAND -->
-        <div class="footer-brand">
-
-            <div class="footer-logo">CYGNUS</div>
-
-            <p class="footer-tagline">
-                Integrated Socioeconomic Innovation.
-            </p>
-
-            <p class="footer-description">
-                Building sustainable solutions through innovation,
-                technology, agriculture, education and community development.
-            </p>
-
         </div>
 
+        <p class="cy-blog-count" id="blog-results-count" aria-live="polite"></p>
+        <div class="blog-grid cy-blog-grid" id="blog-grid" aria-live="polite">
+            <p class="blog-status" id="blog-status">Loading articles...</p>
+        </div>
+        <div class="blog-load-more-wrap">
+            <button id="blog-load-more" class="blog-load-more" type="button" hidden>Load More Articles</button>
+        </div>
+    </section>
+</main>
 
-        <!-- NAVIGATION -->
+<footer class="cygnus-footer">
+    <div class="footer-content">
+        <div class="footer-brand">
+            <div class="footer-logo">CYGNUS</div>
+            <p class="footer-tagline">Integrated Socioeconomic Innovation.</p>
+            <p class="footer-description">Building sustainable solutions through innovation, technology, agriculture, education and community development.</p>
+        </div>
         <div class="footer-navigation">
-
             <h3>Explore</h3>
-
             <div class="footer-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About Us</a>
-                <a href="projects.html">Our Projects</a>
-                <a href="team.html">Our Team</a>
-                <a href="blog.html">Blog</a>
-                <a href="starvia.html">Starvia</a>
+                <a href="index.html">Home</a><a href="about.html">About Us</a>
+                <a href="projects.html">Our Projects</a><a href="team.html">Our Team</a>
+                <a href="blog.html">Blog</a><a href="starvia.html">Starvia</a>
                 <a href="contact.html">Contact</a>
             </div>
-
         </div>
-
-
-        <!-- CONTACT -->
         <div class="footer-contact">
-
             <h3>Get in Touch</h3>
-
-            <div class="footer-contact-item">
-                <span class="footer-contact-icon">✉</span>
-                <div>
-                    <span class="footer-label">Email Us</span>
-                    <a href="mailto:info@cygnusx.io">
-                        info@cygnusx.io
-                    </a>
-                </div>
-            </div>
-
-            <div class="footer-contact-item">
-                <span class="footer-contact-icon">⌖</span>
-                <div>
-                    <span class="footer-label">Location</span>
-                    <p>Nigeria</p>
-                </div>
-            </div>
-
-            <div class="footer-company">
-                Cygnus Alliances Nig Ltd
-            </div>
-
+            <div class="footer-contact-item"><span class="footer-contact-icon">✉</span><div><span class="footer-label">Email Us</span><a href="mailto:info@cygnusx.io">info@cygnusx.io</a></div></div>
+            <div class="footer-contact-item"><span class="footer-contact-icon">⌖</span><div><span class="footer-label">Location</span><p>Nigeria</p></div></div>
+            <div class="footer-company">Cygnus Alliances Nig Ltd</div>
         </div>
-
     </div>
-
-    
-<!-- SOCIAL MEDIA -->
-<div class="footer-social">
-
-    <h3>Follow Cygnus</h3>
-
-    <div class="footer-social-links">
-
-        <a href="https://www.facebook.com/share/1QagBHySaq/?mibextid=wwXIfr"
-           target="_blank"
-           rel="noopener noreferrer"
-           aria-label="Cygnus on Facebook">
-            <span>f</span>
-        </a>
-
-        <a href="YOUR_X_PROFILE_URL"
-           target="_blank"
-           rel="noopener noreferrer"
-           aria-label="Cygnus on X">
-            <span>𝕏</span>
-        </a>
-
-        <a href="https://youtube.com/@cygnusalliances?si=4Abw4vh-zBStGybl"
-           target="_blank"
-           rel="noopener noreferrer"
-           aria-label="Cygnus on YouTube">
-            <span>▶</span>
-        </a>
-
+    <div class="footer-social">
+        <h3>Follow Cygnus</h3>
+        <div class="footer-social-links">
+            <a href="https://www.facebook.com/share/1QagBHySaq/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Cygnus on Facebook"><span>f</span></a>
+            <a href="YOUR_X_PROFILE_URL" target="_blank" rel="noopener noreferrer" aria-label="Cygnus on X"><span>𝕏</span></a>
+            <a href="https://youtube.com/@cygnusalliances?si=4Abw4vh-zBStGybl" target="_blank" rel="noopener noreferrer" aria-label="Cygnus on YouTube"><span>▶</span></a>
+        </div>
     </div>
-
-</div>
-
-
-
-    <!-- COPYRIGHT -->
     <div class="footer-bottom">
-
-        <p>
-            © 2026 Cygnus Alliances Nig Ltd.
-            All rights reserved.
-        </p>
-
+        <p>© 2026 Cygnus Alliances Nig Ltd. All rights reserved.</p>
         <span>Integrated Socioeconomic Innovation.</span>
-
     </div>
-
 </footer>
 
+<script>
+(() => {
+    "use strict";
 
-    <script>
-    
-        // BLOG SYSTEM
+    let allBlogPosts = [];
+    let activeBlogFilter = "all";
+    let visibleBlogPosts = 6;
+    const postsPerLoad = 6;
 
-        let allBlogPosts = [];
-        let activeBlogFilter = "all";
-        let visibleBlogPosts = 6;
+    const blogGrid = document.getElementById("blog-grid");
+    const yearSelect = document.getElementById("blog-year");
+    const searchInput = document.getElementById("blog-search");
+    const count = document.getElementById("blog-results-count");
+    const loadMoreButton = document.getElementById("blog-load-more");
 
-        const blogPostsPerLoad = 6;
+    function escapeHTML(value) {
+        return String(value).replace(/[&<>"']/g, character => ({
+            "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+        })[character]);
+    }
 
-        async function loadBlogPosts() {
+    function safeImageURL(value) {
+        if (!value) return "";
+        try {
+            const url = new URL(String(value), window.location.href);
+            return ["http:", "https:"].includes(url.protocol) ? url.href : "";
+        } catch {
+            return "";
+        }
+    }
 
-            const blogGrid = document.getElementById("blog-grid");
-            const yearSelect = document.getElementById("blog-year");
-            const status = document.getElementById("blog-status");
+    function validDate(post) {
+        const timestamp = Date.parse(post.date || "");
+        return Number.isFinite(timestamp) ? new Date(timestamp) : null;
+    }
 
-            try {
+    function formatDate(date) {
+        return date ? date.toLocaleDateString("en-GB", {
+            day: "numeric", month: "long", year: "numeric"
+        }) : "";
+    }
 
-                const response = await fetch(
-                    "data/posts.json?v=" + Date.now(),
-                    { cache: "no-store" }
-                );
+    function populateYears() {
+        const years = [...new Set(allBlogPosts.map(validDate)
+            .filter(Boolean).map(date => date.getFullYear()))]
+            .sort((a, b) => b - a);
 
-                if (!response.ok) {
-                    throw new Error("Could not load blog posts.");
-                }
+        yearSelect.innerHTML = '<option value="all">All Years</option>' +
+            years.map(year => `<option value="${year}">${year}</option>`).join("");
+    }
 
-                const data = await response.json();
+    function getFilteredPosts() {
+        const now = new Date();
+        const previousMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+        const selectedYear = yearSelect.value;
+        const term = searchInput.value.trim().toLocaleLowerCase();
 
-                if (!Array.isArray(data.posts)) {
-                    throw new Error("The blog data format is incorrect.");
-                }
+        return allBlogPosts.filter(post => {
+            const date = validDate(post);
 
-                allBlogPosts = data.posts.slice().sort((a, b) => {
-                    const dateA = Date.parse(a.date || "") || 0;
-                    const dateB = Date.parse(b.date || "") || 0;
+            if (selectedYear !== "all" &&
+                (!date || date.getFullYear() !== Number(selectedYear))) return false;
 
-                    return dateB - dateA;
-                });
+            if (activeBlogFilter === "month" &&
+                (!date || date.getFullYear() !== now.getFullYear() ||
+                 date.getMonth() !== now.getMonth())) return false;
 
-                // REMOVE LOADING MESSAGE
+            if (activeBlogFilter === "previous" &&
+                (!date || date.getFullYear() !== previousMonth.getFullYear() ||
+                 date.getMonth() !== previousMonth.getMonth())) return false;
 
-                status.remove();
-
-                // POPULATE YEAR FILTER
-
-                const years = [
-                    ...new Set(
-                        allBlogPosts
-                            .map(post => {
-                                const timestamp = Date.parse(post.date || "");
-
-                                return timestamp
-                                    ? new Date(timestamp).getFullYear()
-                                    : null;
-                            })
-                            .filter(Boolean)
-                    )
-                ].sort((a, b) => b - a);
-
-                years.forEach(year => {
-
-                    const option = document.createElement("option");
-
-                    option.value = year;
-                    option.textContent = year;
-
-                    yearSelect.appendChild(option);
-
-                });
-
-                // FILTER BUTTONS
-
-                document.querySelectorAll(".blog-filter").forEach(button => {
-
-                    button.addEventListener("click", function() {
-
-                        activeBlogFilter = this.dataset.filter;
-                        visibleBlogPosts = 6;
-
-                        document.querySelectorAll(".blog-filter").forEach(item => {
-                            item.classList.toggle("active", item === this);
-                        });
-
-                        renderBlogPosts();
-
-                    });
-
-                });
-
-                // YEAR FILTER
-
-                yearSelect.addEventListener("change", function() {
-
-                    visibleBlogPosts = 6;
-                    renderBlogPosts();
-
-                });
-
-                // LOAD MORE
-
-                document.getElementById("blog-load-more")
-                    .addEventListener("click", function() {
-
-                        visibleBlogPosts += blogPostsPerLoad;
-                        renderBlogPosts();
-
-                    });
-
-                renderBlogPosts();
-
-            } catch (error) {
-
-                console.error("Blog loading error:", error);
-
-                blogGrid.innerHTML = `
-                    <p class="blog-status error">
-                        Articles could not load.
-                        Please refresh the page or try again later.
-                    </p>
-                `;
-
-                document.getElementById("blog-results-count").textContent = "";
-
-                document.getElementById("blog-load-more").hidden = true;
-
+            if (term) {
+                const searchable = [post.title, post.category, post.excerpt, post.body]
+                    .join(" ").toLocaleLowerCase();
+                if (!searchable.includes(term)) return false;
             }
+            return true;
+        });
+    }
 
+    function renderBlogPosts() {
+        const filteredPosts = getFilteredPosts();
+
+        if (!filteredPosts.length) {
+            blogGrid.innerHTML = '<p class="blog-status">No articles match your selection. Try another date or search term.</p>';
+            count.textContent = "0 articles";
+            loadMoreButton.hidden = true;
+            return;
         }
 
+        const postsToShow = filteredPosts.slice(0, visibleBlogPosts);
 
-        // DISPLAY ARTICLES
+        blogGrid.innerHTML = postsToShow.map(post => {
+            const title = escapeHTML(post.title || "Untitled");
+            const category = escapeHTML(post.category || "Insights");
+            const excerpt = escapeHTML(post.excerpt || "");
+            const slug = encodeURIComponent(String(post.slug || ""));
+            const dateLabel = formatDate(validDate(post));
+            const imageURL = safeImageURL(post.image);
+            const imageMarkup = imageURL
+                ? `<img src="${escapeHTML(imageURL)}" alt="${title}" class="cms-blog-cover" loading="lazy">`
+                : '<div class="cy-blog-image-placeholder" aria-hidden="true">CYGNUS</div>';
 
-        function renderBlogPosts() {
+            return `<article class="blog-card cy-blog-card">
+                <a class="cy-blog-card-image-link" href="article.html?slug=${slug}" aria-label="Read ${title}">
+                    <div class="blog-image cy-blog-image">${imageMarkup}<span>${category}</span></div>
+                </a>
+                <div class="blog-content cy-blog-content">
+                    <p class="blog-category">${category}</p>
+                    ${dateLabel ? `<p class="blog-date">${escapeHTML(dateLabel)}</p>` : ""}
+                    <h3><a href="article.html?slug=${slug}">${title}</a></h3>
+                    <p class="cy-blog-excerpt">${excerpt}</p>
+                    <a class="article-back-link cy-blog-read-link" href="article.html?slug=${slug}">Read Article <span aria-hidden="true">→</span></a>
+                </div>
+            </article>`;
+        }).join("");
 
-            const blogGrid = document.getElementById("blog-grid");
-            const yearSelect = document.getElementById("blog-year");
-            const count = document.getElementById("blog-results-count");
-            const loadMoreButton = document.getElementById("blog-load-more");
+        count.textContent = `Showing ${postsToShow.length} of ${filteredPosts.length} articles`;
+        loadMoreButton.hidden = visibleBlogPosts >= filteredPosts.length;
+    }
 
-            const selectedYear = yearSelect.value;
-            const now = new Date();
+    function setActiveFilter(button) {
+        activeBlogFilter = button.dataset.filter;
+        visibleBlogPosts = postsPerLoad;
+        document.querySelectorAll(".blog-filter").forEach(item => {
+            const active = item === button;
+            item.classList.toggle("active", active);
+            item.setAttribute("aria-pressed", String(active));
+        });
+        renderBlogPosts();
+    }
 
-            const filteredPosts = allBlogPosts.filter(post => {
+    async function loadBlogPosts() {
+        try {
+            const response = await fetch("data/posts.json?v=" + Date.now(), { cache: "no-store" });
+            if (!response.ok) throw new Error(`Posts request failed (${response.status}).`);
 
-                const timestamp = Date.parse(post.date || "");
-                const postDate = timestamp ? new Date(timestamp) : null;
+            const data = await response.json();
+            if (!data || !Array.isArray(data.posts)) throw new Error("The blog data format is incorrect.");
 
-                if (selectedYear !== "all") {
+            allBlogPosts = data.posts.slice().sort((a, b) =>
+                (Date.parse(b.date || "") || 0) - (Date.parse(a.date || "") || 0)
+            );
 
-                    if (
-                        !postDate ||
-                        postDate.getFullYear() !== Number(selectedYear)
-                    ) {
-                        return false;
-                    }
-
-                }
-
-                if (activeBlogFilter === "month") {
-
-                    return postDate &&
-                        postDate.getFullYear() === now.getFullYear() &&
-                        postDate.getMonth() === now.getMonth();
-
-                }
-
-                if (activeBlogFilter === "previous") {
-
-                    const previousMonth = new Date(
-                        now.getFullYear(),
-                        now.getMonth() - 1,
-                        1
-                    );
-
-                    return postDate &&
-                        postDate.getFullYear() === previousMonth.getFullYear() &&
-                        postDate.getMonth() === previousMonth.getMonth();
-
-                }
-
-                return true;
-
-            });
-
-
-            // NO MATCHING ARTICLES
-
-            if (!filteredPosts.length) {
-
-                blogGrid.innerHTML = `
-                    <p class="blog-status">
-                        No articles found for this period.
-                    </p>
-                `;
-
-                count.textContent = "0 articles";
-                loadMoreButton.hidden = true;
-
-                return;
-
-            }
-
-
-            // ARTICLES TO DISPLAY
-
-            const postsToShow = filteredPosts.slice(0, visibleBlogPosts);
-
-            blogGrid.innerHTML = postsToShow.map(post => {
-
-                const title = escapeHTML(post.title || "Untitled");
-                const category = escapeHTML(post.category || "Insights");
-                const excerpt = escapeHTML(post.excerpt || "");
-                const slug = encodeURIComponent(post.slug || "");
-
-                const timestamp = Date.parse(post.date || "");
-
-                const dateLabel = timestamp
-                    ? new Date(timestamp).toLocaleDateString("en-GB", {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric"
-                    })
-                    : "";
-
-                const image = post.image
-                    ? `
-                        <img
-                            src="${escapeHTML(post.image)}"
-                            alt="${title}"
-                            class="cms-blog-cover"
-                            loading="lazy">
-                    `
-                    : "";
-
-                return `
-                    <article class="blog-card">
-
-                        <div class="blog-image">
-                            ${image}
-                            <span>${category}</span>
-                        </div>
-
-                        <div class="blog-content">
-
-                            <p class="blog-category">${category}</p>
-
-                            ${dateLabel
-                                ? `<p class="blog-date">${dateLabel}</p>`
-                                : ""
-                            }
-
-                            <h3>${title}</h3>
-
-                            <p>${excerpt}</p>
-
-                            <a
-                                class="article-back-link"
-                                href="article.html?slug=${slug}">
-                                Read Article &rarr;
-                            </a>
-
-                        </div>
-
-                    </article>
-                `;
-
-            }).join("");
-
-
-            // UPDATE ARTICLE COUNT
-
-            count.textContent =
-                `Showing ${postsToShow.length} of ${filteredPosts.length} articles`;
-
-
-            // SHOW OR HIDE LOAD MORE
-
-            loadMoreButton.hidden =
-                visibleBlogPosts >= filteredPosts.length;
-
+            populateYears();
+            blogGrid.innerHTML = "";
+            renderBlogPosts();
+        } catch (error) {
+            console.error("Blog loading error:", error);
+            blogGrid.innerHTML = '<p class="blog-status error">Articles could not load. Please refresh the page or try again later.</p>';
+            count.textContent = "";
+            loadMoreButton.hidden = true;
         }
+    }
 
+    document.querySelectorAll(".blog-filter").forEach(button =>
+        button.addEventListener("click", () => setActiveFilter(button))
+    );
+    yearSelect.addEventListener("change", () => { visibleBlogPosts = postsPerLoad; renderBlogPosts(); });
+    searchInput.addEventListener("input", () => { visibleBlogPosts = postsPerLoad; renderBlogPosts(); });
+    loadMoreButton.addEventListener("click", () => { visibleBlogPosts += postsPerLoad; renderBlogPosts(); });
 
-        // HTML ESCAPING
-
-        function escapeHTML(value) {
-
-            return String(value).replace(/[&<>"']/g, character => ({
-
-                "&": "&amp;",
-                "<": "&lt;",
-                ">": "&gt;",
-                '"': "&quot;",
-                "'": "&#39;"
-
-            })[character]);
-
-        }
-
-
-        // START BLOG
-
-        loadBlogPosts();
-
-    </script>
+    loadBlogPosts();
+})();
+</script>
 <script src="js/navigation.js"></script>
 </body>
 </html>

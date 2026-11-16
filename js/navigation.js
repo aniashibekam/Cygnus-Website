@@ -2,47 +2,50 @@ document.addEventListener("DOMContentLoaded", function () {
     const menuToggle = document.getElementById("menuToggle");
     const mainNav = document.getElementById("mainNav");
 
+    // Pages without the shared navigation can safely load this script.
     if (!menuToggle || !mainNav) return;
 
-    menuToggle.addEventListener("click", function () {
-        const isOpen = mainNav.classList.toggle("open");
-
-        menuToggle.setAttribute("aria-expanded", isOpen);
+    function setMenuOpen(isOpen) {
+        mainNav.classList.toggle("open", isOpen);
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
         menuToggle.setAttribute(
             "aria-label",
             isOpen ? "Close navigation menu" : "Open navigation menu"
         );
-
         menuToggle.textContent = isOpen ? "✕" : "☰";
+    }
+
+    menuToggle.addEventListener("click", function () {
+        const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+        setMenuOpen(!isOpen);
     });
 
     mainNav.querySelectorAll("a").forEach(function (link) {
         link.addEventListener("click", function () {
-            mainNav.classList.remove("open");
-            menuToggle.setAttribute("aria-expanded", "false");
-            menuToggle.setAttribute("aria-label", "Open navigation menu");
-            menuToggle.textContent = "☰";
+            setMenuOpen(false);
         });
     });
 
     document.addEventListener("click", function (event) {
-        if (
-            !mainNav.contains(event.target) &&
-            !menuToggle.contains(event.target)
-        ) {
-            mainNav.classList.remove("open");
-            menuToggle.setAttribute("aria-expanded", "false");
-            menuToggle.setAttribute("aria-label", "Open navigation menu");
-            menuToggle.textContent = "☰";
+        const clickedInsideNav = mainNav.contains(event.target);
+        const clickedToggle = menuToggle.contains(event.target);
+
+        if (!clickedInsideNav && !clickedToggle) {
+            setMenuOpen(false);
         }
     });
 
     document.addEventListener("keydown", function (event) {
         if (event.key === "Escape") {
-            mainNav.classList.remove("open");
-            menuToggle.setAttribute("aria-expanded", "false");
-            menuToggle.setAttribute("aria-label", "Open navigation menu");
-            menuToggle.textContent = "☰";
+            setMenuOpen(false);
+            menuToggle.focus();
+        }
+    });
+
+    // Keep the mobile menu closed when returning to desktop width.
+    window.addEventListener("resize", function () {
+        if (window.innerWidth > 700) {
+            setMenuOpen(false);
         }
     });
 });

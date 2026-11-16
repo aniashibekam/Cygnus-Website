@@ -1,0 +1,809 @@
+
+/* =========================================
+   STARVIA PAGE
+========================================= */
+
+.starvia-page {
+    --starvia-green: #176b3a;
+    --starvia-dark: #103d27;
+    --starvia-light: #eef6ef;
+    --starvia-text: #26352c;
+    --starvia-muted: #68766d;
+    color: var(--starvia-text);
+    overflow: hidden;
+}
+
+.starvia-page *,
+.starvia-page *::before,
+.starvia-page *::after {
+    box-sizing: border-box;
+}
+
+.starvia-eyebrow {
+    color: var(--starvia-green);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin: 0 0 18px;
+}
+
+
+/* HERO */
+
+.starvia-hero {
+    min-height: 590px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 90px 9%;
+    color: white;
+    background:
+        radial-gradient(circle at 80% 20%, rgba(101, 180, 111, .24), transparent 35%),
+        linear-gradient(120deg, #092b1b 0%, #145331 55%, #267446 100%);
+}
+
+.starvia-hero::after {
+    content: "";
+    position: absolute;
+    width: 480px;
+    height: 480px;
+    right: -120px;
+    bottom: -220px;
+    border: 1px solid rgba(255,255,255,.13);
+    border-radius: 50%;
+    box-shadow:
+        0 0 0 45px rgba(255,255,255,.025),
+        0 0 0 90px rgba(255,255,255,.025);
+}
+
+.starvia-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+}
+
+.starvia-kicker {
+    display: inline-block;
+    color: #b9e4c4;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.starvia-hero h1 {
+    font-size: clamp(65px, 11vw, 125px);
+    line-height: .95;
+    letter-spacing: 8px;
+    margin: 0 0 20px;
+    font-weight: 900;
+    color: white;
+}
+
+.starvia-hero h2 {
+    max-width: 650px;
+    font-size: clamp(25px, 4vw, 39px);
+    line-height: 1.25;
+    margin: 0 0 20px;
+    color: #e4f3e8;
+}
+
+.starvia-hero-content > p {
+    max-width: 570px;
+    color: #d0e3d5;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.starvia-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 35px;
+}
+
+.starvia-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+    padding: 0 25px;
+    border-radius: 5px;
+    background: #fff;
+    color: var(--starvia-dark);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    transition: .25s ease;
+}
+
+.starvia-button:hover {
+    background: #d9efdf;
+    transform: translateY(-3px);
+}
+
+.starvia-button.secondary {
+    color: white;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,.65);
+}
+
+.starvia-button.secondary:hover {
+    background: rgba(255,255,255,.12);
+}
+
+.starvia-hero-bottom {
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 9%;
+    display: flex;
+    gap: 45px;
+    border-top: 1px solid rgba(255,255,255,.16);
+    color: #d4e8d9;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+
+/* INTRODUCTION */
+
+.starvia-section {
+    padding: 100px 9%;
+}
+
+.starvia-intro {
+    display: grid;
+    grid-template-columns: .65fr 2fr;
+    gap: 70px;
+    align-items: start;
+}
+
+.starvia-intro-label {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: var(--starvia-green);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.starvia-section-number {
+    font-size: 30px;
+    color: #b2cdb8;
+}
+
+.starvia-intro-content {
+    max-width: 800px;
+}
+
+.starvia-intro-content h2 {
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.2;
+    margin: 0 0 28px;
+    color: #153c27;
+}
+
+.starvia-intro-content h2 span {
+    color: var(--starvia-green);
+}
+
+.starvia-intro-content > p:not(.starvia-eyebrow) {
+    color: var(--starvia-muted);
+    font-size: 16px;
+    line-height: 1.9;
+    margin: 0 0 18px;
+}
+
+
+/* PRINCIPLES */
+
+.starvia-principles {
+    background: #f2f7f2;
+    padding: 85px 9%;
+}
+
+.starvia-principles-heading {
+    max-width: 650px;
+    margin-bottom: 45px;
+}
+
+.starvia-principles-heading h2 {
+    font-size: clamp(30px, 4vw, 43px);
+    line-height: 1.25;
+    color: #153c27;
+    margin: 0;
+}
+
+.starvia-principles-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.starvia-principles-grid article {
+    background: white;
+    padding: 30px 25px;
+    border-radius: 7px;
+    border: 1px solid #e5ede6;
+    transition: .25s ease;
+}
+
+.starvia-principles-grid article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(20, 65, 35, .08);
+}
+
+.starvia-principles-grid article > span {
+    color: #78a989;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.starvia-principles-grid h3 {
+    color: #174b2d;
+    font-size: 21px;
+    margin: 25px 0 12px;
+}
+
+.starvia-principles-grid p {
+    color: var(--starvia-muted);
+    line-height: 1.7;
+    font-size: 14px;
+    margin: 0;
+}
+
+
+/* FOCUS AREAS */
+
+.starvia-focus {
+    background: white;
+}
+
+.starvia-section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 45px;
+    margin-bottom: 45px;
+}
+
+.starvia-section-heading h2 {
+    color: #153c27;
+    font-size: clamp(30px, 4vw, 43px);
+    margin: 0;
+}
+
+.starvia-section-heading > p {
+    max-width: 420px;
+    color: var(--starvia-muted);
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.starvia-focus-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.starvia-focus-card {
+    position: relative;
+    padding: 32px;
+    min-height: 245px;
+    border: 1px solid #e4ece5;
+    border-radius: 7px;
+    background: #fff;
+    transition: .3s ease;
+}
+
+.starvia-focus-card:hover {
+    transform: translateY(-6px);
+    border-color: #9ac5a5;
+    box-shadow: 0 15px 35px rgba(15, 65, 34, .08);
+}
+
+.starvia-card-number {
+    position: absolute;
+    right: 25px;
+    top: 23px;
+    font-size: 12px;
+    font-weight: 800;
+    color: #a5bca9;
+}
+
+.starvia-card-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #e9f4eb;
+    color: var(--starvia-green);
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+.starvia-focus-card h3 {
+    color: #174b2d;
+    font-size: 21px;
+    margin: 0 0 12px;
+}
+
+.starvia-focus-card p {
+    color: var(--starvia-muted);
+    line-height: 1.7;
+    font-size: 14px;
+    margin: 0;
+}
+
+
+/* PARTNERSHIP */
+
+.starvia-partnership {
+    padding: 100px 9%;
+    background:
+        radial-gradient(circle at 85% 20%, rgba(133, 196, 143, .2), transparent 35%),
+        #123d27;
+    color: white;
+}
+
+.starvia-partnership-content {
+    max-width: 760px;
+}
+
+.starvia-partnership .starvia-eyebrow {
+    color: #a9dcb6;
+}
+
+.starvia-partnership h2 {
+    font-size: clamp(34px, 5vw, 55px);
+    line-height: 1.2;
+    margin: 0 0 25px;
+    color: white;
+}
+
+.starvia-partnership h2 span {
+    color: #a9dcb6;
+}
+
+.starvia-partnership-content > p:not(.starvia-eyebrow) {
+    max-width: 650px;
+    color: #d2e4d6;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+
+/* DOCUMENTS */
+
+.starvia-resources {
+    background: #f7faf7;
+}
+
+.starvia-documents {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.starvia-documents a {
+    display: flex;
+    flex-direction: column;
+    min-height: 175px;
+    padding: 27px;
+    border: 1px solid #e0eae1;
+    border-radius: 6px;
+    background: white;
+    text-decoration: none;
+    transition: .25s ease;
+}
+
+.starvia-documents a:hover {
+    transform: translateY(-5px);
+    border-color: #83b893;
+    box-shadow: 0 12px 30px rgba(20, 65, 35, .07);
+}
+
+.starvia-document-type {
+    color: #6b9877;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.starvia-documents strong {
+    color: #174b2d;
+    font-size: 19px;
+}
+
+.starvia-document-link {
+    color: var(--starvia-green);
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: auto;
+    padding-top: 20px;
+}
+
+.starvia-resource-note {
+    color: #87928a;
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+
+/* REGISTRATION */
+
+.starvia-registration {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 65px;
+    align-items: center;
+}
+
+.starvia-registration-copy h2 {
+    font-size: clamp(30px, 4vw, 42px);
+    color: #153c27;
+    line-height: 1.2;
+    margin: 0 0 20px;
+}
+
+.starvia-registration-copy > p:last-child {
+    color: var(--starvia-muted);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.starvia-cac-placeholder {
+    min-height: 260px;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 2px dashed #a7c7ad;
+    border-radius: 8px;
+    background: #f4f9f4;
+}
+
+.starvia-cac-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #dcefe0;
+    color: var(--starvia-green);
+    font-size: 27px;
+    margin-bottom: 15px;
+}
+
+.starvia-cac-placeholder h3 {
+    color: #174b2d;
+    font-size: 19px;
+    margin: 0 0 10px;
+}
+
+.starvia-cac-placeholder p {
+    color: var(--starvia-muted);
+    font-size: 13px;
+    margin: 0;
+}
+
+
+/* CONTACT */
+
+.starvia-contact {
+    padding: 100px 9%;
+    background: #eef5ef;
+}
+
+.starvia-contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 75px;
+    align-items: start;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.starvia-contact-copy h2 {
+    font-size: clamp(34px, 4vw, 48px);
+    line-height: 1.2;
+    color: #153c27;
+    margin: 0 0 22px;
+}
+
+.starvia-contact-copy > p:not(.starvia-eyebrow) {
+    color: var(--starvia-muted);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.starvia-direct-email {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 35px;
+}
+
+.starvia-direct-email span {
+    color: #6b9877;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.starvia-direct-email a {
+    color: #174b2d;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.starvia-form-panel {
+    padding: 35px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 12px 40px rgba(20, 65, 35, .06);
+}
+
+.starvia-contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.starvia-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.starvia-form-group label {
+    color: #234b31;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.starvia-form-group input,
+.starvia-form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #dce6dd;
+    border-radius: 5px;
+    outline: none;
+    font-family: inherit;
+    font-size: 14px;
+    background: #fbfdfb;
+    color: #26352c;
+    transition: .2s ease;
+}
+
+.starvia-form-group input:focus,
+.starvia-form-group textarea:focus {
+    border-color: #4d9562;
+    box-shadow: 0 0 0 3px rgba(77,149,98,.1);
+}
+
+.starvia-form-group textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+.starvia-submit-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 5px;
+    background: #176b3a;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+.starvia-submit-button:hover {
+    background: #104c2a;
+}
+
+.starvia-submit-button span {
+    font-size: 20px;
+}
+
+#starvia-form-status {
+    display: none;
+    padding: 13px 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+#starvia-form-status.success,
+#starvia-form-status.error {
+    display: block;
+}
+
+#starvia-form-status.success {
+    color: #176b3a;
+    background: #e9f5ec;
+}
+
+#starvia-form-status.error {
+    color: #a52323;
+    background: #fff0f0;
+}
+
+.starvia-honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+
+/* MOBILE AND TABLET */
+
+@media (max-width: 900px) {
+
+    .starvia-section,
+    .starvia-principles,
+    .starvia-partnership,
+    .starvia-contact {
+        padding: 75px 6%;
+    }
+
+    .starvia-principles-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .starvia-focus-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .starvia-section-heading {
+        align-items: start;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .starvia-contact-inner {
+        gap: 40px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .starvia-hero {
+        min-height: 570px;
+        padding: 75px 7%;
+    }
+
+    .starvia-hero h1 {
+        font-size: 66px;
+        letter-spacing: 4px;
+    }
+
+    .starvia-hero h2 {
+        font-size: 27px;
+    }
+
+    .starvia-hero-content > p {
+        font-size: 15px;
+    }
+
+    .starvia-hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .starvia-button {
+        width: 100%;
+    }
+
+    .starvia-hero-bottom {
+        padding: 17px 7%;
+        gap: 14px;
+        justify-content: space-between;
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    .starvia-section,
+    .starvia-principles,
+    .starvia-partnership,
+    .starvia-contact {
+        padding: 65px 7%;
+    }
+
+    .starvia-intro {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .starvia-intro-content h2 {
+        font-size: 34px;
+    }
+
+    .starvia-principles-grid,
+    .starvia-focus-grid,
+    .starvia-documents,
+    .starvia-registration,
+    .starvia-contact-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .starvia-principles-grid {
+        gap: 14px;
+    }
+
+    .starvia-focus-card {
+        min-height: auto;
+    }
+
+    .starvia-section-heading h2,
+    .starvia-principles-heading h2 {
+        font-size: 32px;
+    }
+
+    .starvia-partnership h2 {
+        font-size: 36px;
+    }
+
+    .starvia-registration {
+        gap: 30px;
+    }
+
+    .starvia-contact-inner {
+        gap: 35px;
+    }
+
+    .starvia-form-panel {
+        padding: 23px 18px;
+    }
+}
+
+.starvia-partnership {
+    text-align: center;
+}
+
+.starvia-partnership-content {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.starvia-partnership-content > p:not(.starvia-eyebrow) {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.starvia-partnership .starvia-button {
+    margin: 0 auto;
+}
+
+.starvia-hero {
+    padding-left: 5%;
+}
+
+.starvia-hero-content {
+    margin-left: 0;
+    text-align: left;
+}
