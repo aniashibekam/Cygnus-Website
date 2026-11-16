@@ -2921,3 +2921,234 @@ body.agriculture-article .article-page {
         font-size: 1.8rem;
     }
 }
+
+
+.footer-email {
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+.footer-email a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-email a:hover {
+    color: #16a34a;
+    text-decoration: underline;
+}
+
+
+/* =================================
+   CYGNUS MODERN FOOTER
+================================= */
+
+.cygnus-footer {
+    background: #101d17;
+    color: #ffffff;
+    padding: 70px 6% 25px;
+    margin-top: 0;
+}
+
+.cygnus-footer .footer-content {
+    max-width: 1250px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 0.8fr 1fr;
+    gap: 70px;
+    padding-bottom: 55px;
+}
+
+/* BRAND */
+
+.cygnus-footer .footer-logo {
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: #42c978;
+    margin-bottom: 12px;
+}
+
+.cygnus-footer .footer-tagline {
+    font-size: 15px;
+    color: #ffffff;
+    font-weight: 500;
+    margin-bottom: 18px;
+}
+
+.cygnus-footer .footer-description {
+    color: #aebdb2;
+    font-size: 14px;
+    line-height: 1.9;
+    max-width: 340px;
+}
+
+/* SECTION HEADINGS */
+
+.cygnus-footer h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #42c978;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 24px;
+}
+
+/* NAVIGATION */
+
+.cygnus-footer .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.cygnus-footer .footer-links a {
+    color: #c5d0c8;
+    font-size: 14px;
+    text-decoration: none;
+    width: fit-content;
+    transition: color 0.3s ease,
+                transform 0.3s ease;
+}
+
+.cygnus-footer .footer-links a:hover {
+    color: #42c978;
+    transform: translateX(5px);
+}
+
+/* CONTACT */
+
+.cygnus-footer .footer-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 22px;
+}
+
+.cygnus-footer .footer-contact-icon {
+    color: #42c978;
+    font-size: 21px;
+    min-width: 22px;
+}
+
+.cygnus-footer .footer-label {
+    display: block;
+    color: #84988a;
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+
+.cygnus-footer .footer-contact-item a {
+    color: #ffffff;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.cygnus-footer .footer-contact-item a:hover {
+    color: #42c978;
+}
+
+.cygnus-footer .footer-contact-item p {
+    color: #c5d0c8;
+    font-size: 14px;
+}
+
+.cygnus-footer .footer-company {
+    margin-top: 25px;
+    padding-top: 18px;
+    border-top: 1px solid #304238;
+    color: #aebdb2;
+    font-size: 13px;
+}
+
+/* COPYRIGHT */
+
+.cygnus-footer .footer-bottom {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding-top: 22px;
+    border-top: 1px solid #304238;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.cygnus-footer .footer-bottom p,
+.cygnus-footer .footer-bottom span {
+    color: #91a398;
+    font-size: 12px;
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+
+    .cygnus-footer .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 45px;
+    }
+
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .cygnus-footer {
+        padding: 50px 7% 22px;
+    }
+
+    .cygnus-footer .footer-content {
+        grid-template-columns: 1fr;
+        gap: 38px;
+        padding-bottom: 35px;
+    }
+
+    .cygnus-footer .footer-description {
+        max-width: 100%;
+    }
+
+    .cygnus-footer .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+}
+
+/* CYGNUS SOCIAL MEDIA */
+
+.cygnus-footer .footer-social {
+    margin-top: 28px;
+}
+
+.cygnus-footer .footer-social-links {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.cygnus-footer .footer-social-links a {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #42c978;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #42c978;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.cygnus-footer .footer-social-links a:hover {
+    background: #42c978;
+    color: #101d17;
+    transform: translateY(-4px);
+    box-shadow: 0 5px 15px rgba(66, 201, 120, 0.2);
+}
