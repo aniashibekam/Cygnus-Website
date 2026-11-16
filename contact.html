@@ -1,15 +1,19 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <link rel="icon" type="image/png" href="images/cygnus-logo.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Team | Cygnus Alliances Nig Ltd</title>
+
+    <title>Contact Us | Cygnus Alliances Nig Ltd</title>
+    <meta name="description" content="Contact Cygnus Alliances Nig Ltd for partnerships, business opportunities, investment and community initiatives.">
+
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contact.css">
 </head>
 
 <body>
-
 
 <header class="navbar">
     <a href="index.html" class="logo">
@@ -39,126 +43,290 @@
         <a href="about.html">About</a>
         <a href="projects.html">Projects</a>
         <a href="contact.html" class="active" aria-current="page">Contact</a>
-        <a href="blog.html" >Blog</a>
+        <a href="blog.html">Blog</a>
         <a href="team.html">Team</a>
         <a href="starvia.html">Starvia</a>
     </nav>
 </header>
 
 
-    <main>
+<main class="contact-page">
 
-        <section class="page-hero">
+    <!-- HERO -->
+    <section class="contact-hero">
+        <div class="contact-hero-content">
 
-            <div>
+            <p class="contact-eyebrow">LET'S START A CONVERSATION</p>
 
-                <p class="eyebrow">CONTACT CYGNUS</p>
+            <h1>
+                Let's build<br>
+                something that matters.
+            </h1>
 
-                <h1>Let's Build Something That Matters.</h1>
+            <p>
+                Whether you are interested in a partnership, an investment
+                opportunity, a community initiative or a collaboration with
+                Cygnus Alliances Nig Ltd, we welcome conversations that can
+                turn ideas into practical solutions.
+            </p>
+
+            <a href="#contact" class="contact-hero-button">
+                Get in Touch
+                <span>↓</span>
+            </a>
+
+        </div>
+
+        <div class="contact-hero-decoration">
+            <div class="contact-hero-ring ring-one"></div>
+            <div class="contact-hero-ring ring-two"></div>
+            <div class="contact-hero-center">
+                <span>CONNECT</span>
+                <strong>CREATE</strong>
+                <span>COLLABORATE</span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CONTACT OPTIONS -->
+    <section class="contact-options">
+
+        <div class="contact-section-heading">
+            <p class="contact-eyebrow green">GET IN TOUCH</p>
+
+            <h2>
+                How can we<br>
+                <span>work together?</span>
+            </h2>
+
+            <p>
+                We welcome conversations with people, businesses and
+                organisations interested in creating practical
+                socioeconomic value.
+            </p>
+        </div>
+
+
+        <div class="contact-options-grid">
+
+            <article class="contact-option">
+                <span class="contact-option-number">01</span>
+
+                <div class="contact-option-icon">↗</div>
+
+                <h3>Partnerships</h3>
+
                 <p>
-                    Whether you are interested in a partnership, an investment
-                    opportunity, a community initiative or a collaboration with
-                    Cygnus Alliances Nig Ltd, we welcome conversations that can
-                    turn ideas into practical solutions.
+                    Explore collaborations with Cygnus on projects,
+                    community development and institutional initiatives.
                 </p>
+
+                <a href="#contact">Discuss a partnership <span>→</span></a>
+            </article>
+
+
+            <article class="contact-option">
+                <span class="contact-option-number">02</span>
+
+                <div class="contact-option-icon">◇</div>
+
+                <h3>Business &amp; Investment</h3>
+
+                <p>
+                    Discuss business opportunities, investment interests
+                    and ideas with the potential to create sustainable value.
+                </p>
+
+                <a href="#contact">Explore opportunities <span>→</span></a>
+            </article>
+
+
+            <article class="contact-option">
+                <span class="contact-option-number">03</span>
+
+                <div class="contact-option-icon">◎</div>
+
+                <h3>Projects &amp; Community</h3>
+
+                <p>
+                    Connect with us about agricultural initiatives,
+                    education, technology and cultural innovation.
+                </p>
+
+                <a href="#contact">Share your idea <span>→</span></a>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT FORM -->
+    <section class="contact-form-section" id="contact">
+
+        <div class="contact-form-intro">
+
+            <p class="contact-eyebrow green">WE'RE LISTENING</p>
+
+            <h2>
+                Have an idea?<br>
+                <span>Let's talk.</span>
+            </h2>
+
+            <p>
+                Tell us what you have in mind. Whether it is a question,
+                a proposal or an opportunity to work together, our team
+                would be glad to hear from you.
+            </p>
+
+            <div class="contact-direct-details">
+
+                <div class="contact-detail">
+                    <span class="contact-detail-icon">✉</span>
+
+                    <div>
+                        <span>Email</span>
+                        <a href="mailto:info@cygnusx.io">
+                            info@cygnusx.io
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <span class="contact-detail-icon">⌖</span>
+
+                    <div>
+                        <span>Location</span>
+                        <p>Nigeria</p>
+                    </div>
+                </div>
 
             </div>
 
-        </section>
+        </div>
 
 
-        
-<section class="contact-options">
-    <div class="section-heading">
-        <p class="eyebrow green">GET IN TOUCH</p>
-        <h2>How Can We Work Together?</h2>
+        <div class="contact-form-card">
+
+            <div class="contact-form-heading">
+                <h3>Send us a message</h3>
+
+                <p>
+                    Complete the form below and we'll receive your enquiry.
+                </p>
+            </div>
+
+
+            <form action="contact-submit.php" method="POST" id="contactForm">
+
+                <div class="contact-field">
+                    <label for="name">Full Name</label>
+
+                    <input type="text"
+                           id="name"
+                           name="name"
+                           placeholder="Enter your full name"
+                           required
+                           maxlength="150">
+                </div>
+
+
+                <div class="contact-field">
+                    <label for="email">Email Address</label>
+
+                    <input type="email"
+                           id="email"
+                           name="email"
+                           placeholder="Enter your email address"
+                           required
+                           maxlength="254">
+                </div>
+
+
+                <div class="contact-field">
+                    <label for="subject">Subject</label>
+
+                    <input type="text"
+                           id="subject"
+                           name="subject"
+                           placeholder="What is your message about?"
+                           required
+                           maxlength="200">
+                </div>
+
+
+                <div class="contact-field">
+                    <label for="message">Your Message</label>
+
+                    <textarea id="message"
+                              name="message"
+                              rows="6"
+                              placeholder="Write your message here..."
+                              required
+                              maxlength="5000"></textarea>
+                </div>
+
+
+                <!-- SPAM PROTECTION -->
+                <div class="contact-honeypot" aria-hidden="true">
+                    <label for="website">Leave this field empty</label>
+
+                    <input type="text"
+                           id="website"
+                           name="website"
+                           tabindex="-1"
+                           autocomplete="off">
+                </div>
+
+
+                <button type="submit" class="contact-submit-button">
+                    Send Message
+                    <span>→</span>
+                </button>
+
+                <p class="contact-form-note">
+                    Your message will be sent directly to the Cygnus team.
+                </p>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- CLOSING -->
+    <section class="contact-closing">
+
+        <p class="contact-eyebrow">THE NEXT STEP STARTS HERE</p>
+
+        <h2>
+            Meaningful progress<br>
+            begins with connection.
+        </h2>
+
         <p>
-            We welcome conversations with people and organisations
-            interested in creating practical socioeconomic value.
+            Let's bring ideas, people and opportunities together
+            to create something that makes a difference.
         </p>
-    </div>
 
-    <div class="contact-options-grid">
-        <div class="contact-option">
-            <h3>Partnerships</h3>
-            <p>
-                Explore collaborations with Cygnus on projects,
-                community development and institutional initiatives.
-            </p>
-        </div>
+        <a href="mailto:info@cygnusx.io" class="contact-closing-button">
+            Email Cygnus
+            <span>→</span>
+        </a>
 
-        <div class="contact-option">
-            <h3>Business &amp; Investment</h3>
-            <p>
-                Discuss business opportunities, investment interests
-                and ideas with the potential to create sustainable value.
-            </p>
-        </div>
+    </section>
 
-        <div class="contact-option">
-            <h3>Projects &amp; Community</h3>
-            <p>
-                Connect with us about agricultural initiatives,
-                education, technology and cultural innovation.
-            </p>
-        </div>
-    </div>
-</section>
+</main>
 
 
-<section class="contact-form">
-    <h2>Send Us a Message</h2>
-    <p>Have a question, an idea, or a partnership opportunity?
-       We would love to hear from you.</p>
-
-    
-
-<form action="contact-submit.php" method="POST" id="contactForm">
-
-    <label for="name">Full Name</label>
-    <input type="text" id="name" name="name"
-           placeholder="Enter your full name"
-           required maxlength="150">
-
-    <label for="email">Email Address</label>
-    <input type="email" id="email" name="email"
-           placeholder="Enter your email address"
-           required maxlength="254">
-
-    <label for="subject">Subject</label>
-    <input type="text" id="subject" name="subject"
-           placeholder="What is your message about?"
-           required maxlength="200">
-
-    <label for="message">Your Message</label>
-    <textarea id="message" name="message" rows="6"
-              placeholder="Write your message here..."
-              required maxlength="5000"></textarea>
-
-    <!-- Spam protection -->
-    <div class="contact-honeypot" aria-hidden="true">
-        <label for="website">Leave this field empty</label>
-        <input type="text" id="website" name="website"
-               tabindex="-1" autocomplete="off">
-    </div>
-
-    <button type="submit">Send Message</button>
-
-</form>
-
-</section>
-
-
-    </main>
-
-
-    <footer class="cygnus-footer">
+<!-- FOOTER -->
+<footer class="cygnus-footer">
 
     <div class="footer-content">
 
-        <!-- BRAND -->
         <div class="footer-brand">
-
             <div class="footer-logo">CYGNUS</div>
 
             <p class="footer-tagline">
@@ -169,13 +337,10 @@
                 Building sustainable solutions through innovation,
                 technology, agriculture, education and community development.
             </p>
-
         </div>
 
 
-        <!-- NAVIGATION -->
         <div class="footer-navigation">
-
             <h3>Explore</h3>
 
             <div class="footer-links">
@@ -187,17 +352,15 @@
                 <a href="starvia.html">Starvia</a>
                 <a href="contact.html">Contact</a>
             </div>
-
         </div>
 
 
-        <!-- CONTACT -->
         <div class="footer-contact">
-
             <h3>Get in Touch</h3>
 
             <div class="footer-contact-item">
                 <span class="footer-contact-icon">✉</span>
+
                 <div>
                     <span class="footer-label">Email Us</span>
                     <a href="mailto:info@cygnusx.io">
@@ -208,6 +371,7 @@
 
             <div class="footer-contact-item">
                 <span class="footer-contact-icon">⌖</span>
+
                 <div>
                     <span class="footer-label">Location</span>
                     <p>Nigeria</p>
@@ -217,47 +381,43 @@
             <div class="footer-company">
                 Cygnus Alliances Nig Ltd
             </div>
+        </div>
+
+    </div>
+
+
+    <div class="footer-social">
+
+        <h3>Follow Cygnus</h3>
+
+        <div class="footer-social-links">
+
+            <a href="https://www.facebook.com/share/1QagBHySaq/?mibextid=wwXIfr"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Cygnus on Facebook">
+                <span>f</span>
+            </a>
+
+            <a href="YOUR_X_PROFILE_URL"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Cygnus on X">
+                <span>𝕏</span>
+            </a>
+
+            <a href="https://youtube.com/@cygnusalliances?si=4Abw4vh-zBStGybl"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Cygnus on YouTube">
+                <span>▶</span>
+            </a>
 
         </div>
 
     </div>
 
-    
-<!-- SOCIAL MEDIA -->
-<div class="footer-social">
 
-    <h3>Follow Cygnus</h3>
-
-    <div class="footer-social-links">
-
-        <a href="https://www.facebook.com/share/1QagBHySaq/?mibextid=wwXIfr"
-           target="_blank"
-           rel="noopener noreferrer"
-           aria-label="Cygnus on Facebook">
-            <span>f</span>
-        </a>
-
-        <a href="YOUR_X_PROFILE_URL"
-           target="_blank"
-           rel="noopener noreferrer"
-           aria-label="Cygnus on X">
-            <span>𝕏</span>
-        </a>
-
-        <a href="https://youtube.com/@cygnusalliances?si=4Abw4vh-zBStGybl"
-           target="_blank"
-           rel="noopener noreferrer"
-           aria-label="Cygnus on YouTube">
-            <span>▶</span>
-        </a>
-
-    </div>
-
-</div>
-
-
-
-    <!-- COPYRIGHT -->
     <div class="footer-bottom">
 
         <p>
@@ -270,6 +430,7 @@
     </div>
 
 </footer>
+
 
 <script src="js/navigation.js"></script>
 
